@@ -9,8 +9,7 @@ Pass it on to the next component (via await next())
 
 Act on the response on the way back
 
-🧱 Example:
-
+### 🧱 Example:
 csharp
 ```
 app.Use(async (context, next) =>
@@ -22,8 +21,7 @@ app.Use(async (context, next) =>
 ```
 🧠 Think of middleware as global plumbing — it affects all requests.
 
-🔍 Common uses:
-
+### 🔍 Common uses:
 - Logging
 - Exception handling
 - CORS
@@ -38,8 +36,7 @@ Filters are scoped to controller actions or Razor Pages. They let you run code:
 - Before or after action methods
 - Before or after results (e.g. views, JSON)
 
-🧱 Example:
-
+### 🧱 Example:
 csharp
 ```
 public class LogActionFilter : IActionFilter
@@ -66,7 +63,7 @@ public class MyController : Controller
 }
 ```
 
-🔍 Common uses:
+### 🔍 Common uses:
 - Validation
 - Authorization
 - Logging (per action)
@@ -74,3 +71,15 @@ public class MyController : Controller
 - Modifying result/response metadata
 
 📌 Filters have access to **ControllerContext**, **ModelState**, and action arguments.
+
+## 🧠 Middleware vs Filters — Core Differences
+| Feature                          | Middleware                       | Filters                                         |
+| -------------------------------- | -------------------------------- | ----------------------------------------------- |
+| Runs Before/After Routing        | ✅ Yes (before routing)           | ❌ No (runs after routing — inside MVC pipeline) |
+| Access to route/controller info  | ❌ No                             | ✅ Yes — has action, controller, model info      |
+| Works on all requests            | ✅ Yes                            | ❌ No — only controller actions & Razor pages    |
+| Granular control (per action)    | ❌ No — global only               | ✅ Yes — apply to a single action/controller     |
+| ModelState / ActionContext       | ❌ No                             | ✅ Yes                                           |
+| Modify response globally         | ✅ Yes                            | ⚠ Only within MVC actions                       |
+| Throwing short-circuit responses | ✅ Yes                            | ✅ Yes                                           |
+| Access to DI-scoped services     | ✅ (via app.Services) or manually | ✅ Easily via constructor injection              |
