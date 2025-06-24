@@ -2,6 +2,9 @@ using System.Collections.Concurrent;
 
 namespace Api.ChatHub;
 
+/// <summary>
+/// Remembers the active user connections to the SignalR hub.
+/// </summary>
 public interface IUserConnectionStore
 {
     void Add(string user, string connectionId);

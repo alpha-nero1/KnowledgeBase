@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Api.ChatHub;
 
+/// <summary>
+/// Standard way of sending messages over SignalR, uses IUserConnectionStore to do so.
+/// </summary>
 public interface IChatDispatcher
 {
     Task SendAsync(string recipientUser, string senderUser, string message);

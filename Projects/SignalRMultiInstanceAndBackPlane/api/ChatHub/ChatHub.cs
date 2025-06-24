@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Api.ChatHub;
 
+/// <summary>
+/// Our lean strongly typed ChatHub which SignalR directly uses to send messages once
+/// received from users.
+/// </summary>
 public interface IChatHub
 {
     Task ReceiveMessage(string recipient, string message);
