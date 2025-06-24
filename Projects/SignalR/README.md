@@ -1,4 +1,6 @@
 # 📨 Projects / SignalR
+*⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+
 Demonstrates how a very simple websocket setup can work with dotnet and react.
 
 In this project we have multiple users (different tabs with a new instance of the client open), who can send messages to other specific users, connecting through the hub set up in the **api**.

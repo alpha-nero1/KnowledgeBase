@@ -33,6 +33,7 @@ function App() {
   const connDesc = () => {
     if (hub.isLoading) return 'Loading...';
     if (hub.connectionSevered) return 'Severed X';
+    if (!isLoggedIn) return 'Must log in';
     return 'Live';
   }
 
@@ -40,7 +41,14 @@ function App() {
     <>
       <div className="card">
         <h1>Chat</h1>
-        <div>Connection: {connDesc()}</div>
+        <div className='row'>
+            <div>Connection: {connDesc()}</div>
+            {
+                hub.connectionSevered && !hub.isLoading ?
+                <button onClick={hub.connect}>Reconnect</button>
+                : null
+            }
+        </div>
         <div>
             {
                 isLoggedIn ? <div>Hello: {from}</div> :
@@ -63,7 +71,11 @@ function App() {
         <div className='col'>
             <h2>Messages</h2>
             <div>
-                {hub.messages.map(msg => <p>{msg.user} - {msg.message}</p>)}
+                {hub.messages.map(msg => 
+                    <p key={`${msg.user} - ${msg.message}`}>
+                        {msg.user} - {msg.message}
+                    </p>
+                )}
             </div>
         </div>
       </div>
