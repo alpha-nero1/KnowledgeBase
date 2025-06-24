@@ -22,18 +22,42 @@ export const useHubConnection = (username: string, isLoggedIn: boolean) => {
         if (!isLoggedIn) return;
         const _connection = new signalR.HubConnectionBuilder()
             .withUrl(`${hubUrl}?user=${username}`, hubOptions)
+            // SignalR handles the reconnection logic here.
             .withStatefulReconnect()
             .build();
-        setIsLoading(true);
 
+        // Add our SignalR lifecycle hooks here!
+        // on reconnecting.
+        _connection.onreconnecting(err => {
+            console.warn("Lost SignalR connection, attempting to reconnect: ", err);
+            setConnectionSevered(true);
+        });
+
+        // on reconnected!
+        _connection.onreconnected(connectionId  => {
+            console.log("Reconnected! New connectionId: ", connectionId);
+            setConnectionSevered(false);
+        });
+
+        // Connection completely closed.
+        _connection.onclose(err => {
+            console.error("SignalR connection closed for good:", err);
+            // retries exhausted or stop was called
+            setConnectionSevered(true);
+        });
+
+        // Regular handlers after lifecylce handler setup.
+        _connection.on(receiveMessageKey, (user, message) => {
+            setMessages(prev => [...prev, { user, message }]);
+        });
+
+        setIsLoading(true);
         _connection
             .start()
             .then(() => {
                 console.log('Connected to SignalR hub');
                 // The magica!
-                _connection.on(receiveMessageKey, (user, message) => {
-                    setMessages(prev => [...prev, { user, message }]);
-                });
+                setConnectionSevered(false);
                 setIsLoading(false);
             })
             .catch(err => {

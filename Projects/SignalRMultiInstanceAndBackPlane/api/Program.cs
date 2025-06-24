@@ -1,19 +1,32 @@
 using System.Security.Claims;
-using System.Text;
+using Api.ChatHub;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
+
+#region Vars
+
+string clientUrl = "http://localhost:3000";
+string redisUrl = "localhost:6379";
+
+#endregion;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
-services.AddSignalR();
+// Now signalR is multi-tenanted.
+services.AddSignalR().AddStackExchangeRedis(redisUrl);
+services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisUrl));
+services.AddSingleton<IUserConnectionStore, UserConnectionStore>();
+services.AddSingleton<IChatDispatcher, ChatDispatcher>();
 
 services.AddCors(options =>
 {
     options.AddPolicy("Dev", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins(clientUrl)
               .AllowAnyHeader()
               .AllowAnyMethod()
               // REQUIRED FOR SIGNALR
@@ -99,6 +112,38 @@ app.Use(async (context, next) =>
 
         context.Response.StatusCode = 500;
         await context.Response.WriteAsync("An unexpected error occurred.");
+    }
+});
+
+// Set up Redis multiplexing subscription.
+var redis = app.Services.GetRequiredService<IConnectionMultiplexer>();
+var sub = redis.GetSubscriber();
+// Get our hub context.
+var hubContext = app.Services.GetRequiredService<IHubContext<ChatHub>>();
+
+// Subscribe to the notify.users on the stack exchange and pass the message on via this hub.
+sub.Subscribe("notify.users", async (channel, value) =>
+{
+    Console.WriteLine($"New message: {value}");
+    try
+    {
+        var payload = JsonSerializer.Deserialize<RedisMessage>(value!);
+        if (string.IsNullOrEmpty(payload?.Recipient))
+        {
+            return;
+        }
+
+        Console.WriteLine($"Passing message on: {payload.Message}");
+        var chatDispatcher = app.Services.GetRequiredService<IChatDispatcher>();
+        await chatDispatcher.SendAsync(
+            payload.Recipient,
+            payload.Sender,
+            payload.Message
+        );
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[Redis Subscribe Error]: {ex.Message}");
     }
 });
 
