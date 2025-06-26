@@ -1,3 +1,10 @@
+# Project specific
+Projects/SmallLLM/docs/**
+
+# Python
+.venv
+*.sqlite3
+
 # CMake
 CMakeLists.txt.user
 CMakeCache.txt
