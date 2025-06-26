@@ -3,14 +3,14 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (3)
+## 🗃️ Directory (4)
 - ✅ [SignalR](./SignalR/)
 - ✅ [SignalRMultiInstanceAndBackPlane](./SignalRMultiInstanceAndBackPlane/)
 - ✅ [ActiveMQ](./ActiveMQ)
-- 🛠️ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
+- ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
+- 🛠️ [SmallLLM](./SmallLLM)
 
-## ✨ Wishlist (11)
-- Small LLM Local Project (llama-cpp or ollama)
+## ✨ Wishlist (10)
 - Apache Kafka setup
 - AWS SQS setup
 - Proper clean architecture setup
