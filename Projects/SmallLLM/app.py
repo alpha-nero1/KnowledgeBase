@@ -1,72 +1,68 @@
-import pathlib, rich, chromadb
-from llama_index.core import (
-    SimpleDirectoryReader, VectorStoreIndex,
-    Settings
-)
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+import rich
+import sys
 from llama_index.llms.ollama import Ollama
-from llama_index.vector_stores.chroma import ChromaVectorStore
-from llama_index.core import StorageContext
-from chromadb import PersistentClient
+import requests
+from llama_index.core.prompts import Prompt
 
-# put your PDFs here
-PDF_DIR = "docs"
+# running tinnyllama because I don't have a stupid nvidia GPU
+DEFAULT_MODEL = "tinyllama" # use "mistral" when you do lol
 
-# on-disk vector store
-CHROMA_DIR = "chroma_db"
+console = rich.console.Console()
+
+
+def __get_model_name():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    
+    return DEFAULT_MODEL
+
+
+def __is_ollama_live(model_name):
+    try:
+        requests.get("http://localhost:11434/api/tags", timeout=5)
+        console.print(f'[bold green]✅ Ollama ({model_name}) is up[/]')
+        return True
+    except Exception as e:
+        console.print('[bold red]❌ Ollama connection failed:[/]', e)
+        return False
+
 
 """
-    Build the LLM Service.
+    Main application entrypoint.
 """
-def build_service():
-    # 1. LLM Setup
-    llm = Ollama(model="mistral", temperature=0)
-
-    # 2. Embeddings (tiny, CPU friendly model)
-    embed = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-    # 3. Global settings
-    Settings.llm = llm
-    Settings.embed_model = embed
-
-def build_or_load_index():
-    chroma_client = PersistentClient(path=CHROMA_DIR)
-    vector_store = ChromaVectorStore(
-        collection_name="pdf_docs",
-        client=chroma_client,
-    )
-    if pathlib.Path(CHROMA_DIR).exists():
-        storage_context = StorageContext.from_defaults(vector_store=vector_store)
-        return VectorStoreIndex.from_vector_store(vector_store, storage_context=storage_context)
-
-    reader = SimpleDirectoryReader(PDF_DIR, recursive=True)
-    docs = reader.load_data()
-
-    index = VectorStoreIndex.from_documents(
-        docs,
-        storage_context=StorageContext.from_defaults(vector_store=vector_store),
-        show_progress=True,
-    )
-    index.storage_context.persist()
-    return index
-
 def main():
-    build_service()
-    index = build_or_load_index()
-    qa = index.as_query_engine(streaming=True)
+    model_name = __get_model_name();
+    with console.status(f'[bold blue]Starting {model_name}...[/]', spinner="dots"):
+        if (not __is_ollama_live(model_name)):
+            return;
+        llm = Ollama(
+            model=model_name,
+            base_url="http://localhost:11434",
+            request_timeout=300.0
+        )
 
-    console = rich.console.Console()
-    console.print("[bold green]Ask me anything about your PDFs! (type 'exit' to quit)[/]")
+    console.print("[bold green]How can I help? (type 'exit' to quit)[/]")
 
     while True:
         prompt = console.input("[bold cyan]> [/]")
         if (prompt.lower() in { "exit", "quit" }):
             break
+        if (len(prompt) == 0):
+            continue
+
         # Stream the tokens
-        for chunk in qa.query(prompt):
+        # What is the "43a Rofe Street Tenant Agreement" document about?
+        #try:
+        with console.status('[bold blue]Thinking...[/]', spinner="dots"):
+            stream = llm.stream(Prompt(prompt))
+
+        for chunk in stream:
             console.print(chunk, end="", soft_wrap=True)
-        # Newline
         console.print()
+
+    console.print('[bold blue]Chat soon![/]')
+
 
 if __name__ == "__main__":
     main()
+

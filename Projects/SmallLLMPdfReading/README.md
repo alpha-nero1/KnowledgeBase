@@ -1,10 +1,12 @@
-# 👾 Projects / SmallLLM
+# 👾 Projects / SmallLLMPdfReading
 > *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 > *⚠️Running AI is processor intensive and optimal if you have a GPU enabled (Nvidia seems to be the only one that works)*
 
 ## 🤷‍♂️ What does it do?
-Sets up a simple AI chat bot that you can chat with on your local machine, it's great, give it a go!
+This project reads a directory of pdfs that you have in `/docs` and one you start it you can ask questions about those documents! All the while without an internet connection (AI is local).
+
+![Example](./Example.JPG)
 
 ## 🛠️ Project setup
 ### Prerequisites
