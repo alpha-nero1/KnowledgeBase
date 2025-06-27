@@ -3,15 +3,16 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (4)
-- ✅ [SignalR](./SignalR/)
-- ✅ [SignalRMultiInstanceAndBackPlane](./SignalRMultiInstanceAndBackPlane/)
+## 🗃️ Directory (6)
 - ✅ [ActiveMQ](./ActiveMQ)
 - ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
-- 🛠️ [SmallLLM](./SmallLLM)
+- ✅ [SignalR](./SignalR/)
+- ✅ [SignalRMultiInstanceAndBackPlane](./SignalRMultiInstanceAndBackPlane/)
+- ✅ [SmallLLM](./SmallLLM)
+- ✅ [SmallLLMPdfReading](./SmallLLMPdfReading)
+- 🛠️ Apache Kafka setup
 
 ## ✨ Wishlist (10)
-- Apache Kafka setup
 - AWS SQS setup
 - Proper clean architecture setup
 - Hangfire setup
