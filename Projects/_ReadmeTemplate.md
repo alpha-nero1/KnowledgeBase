@@ -11,3 +11,7 @@
 
 
 ## ⚖️ Final Remarks
+
+
+Useful emojis
+👷🌐✅📦ℹ️⚡🧰

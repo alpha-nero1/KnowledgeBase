@@ -3,17 +3,17 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (6)
+## 🗃️ Directory (7)
 - ✅ [ActiveMQ](./ActiveMQ)
 - ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 - ✅ [SignalR](./SignalR/)
 - ✅ [SignalRMultiInstanceAndBackPlane](./SignalRMultiInstanceAndBackPlane/)
 - ✅ [SmallLLM](./SmallLLM)
 - ✅ [SmallLLMPdfReading](./SmallLLMPdfReading)
-- 🛠️ Apache Kafka setup
-
-## ✨ Wishlist (10)
+- ✅ [Kafka](./Kafka/)
 - AWS SQS setup
+
+## ✨ Wishlist (9)
 - Proper clean architecture setup
 - Hangfire setup
 - Publish and run docker image of simple server
