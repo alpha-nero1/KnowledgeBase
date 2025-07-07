@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  localstack:
+    image: localstack/localstack:4       # v4.x (July 2025)
+    ports:
+      - "4566:4566"      # edge / SQS
+      - "4510-4559:4510-4559"
+    environment:
+      - SERVICES=sqs
+      - AWS_DEFAULT_REGION=ap-southeast-2
+      - LS_LOG=warn
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"

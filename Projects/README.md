@@ -11,7 +11,7 @@ Inside this subfolder are demonstrations of how things can work.
 - ✅ [SmallLLM](./SmallLLM)
 - ✅ [SmallLLMPdfReading](./SmallLLMPdfReading)
 - ✅ [Kafka](./Kafka/)
-- AWS SQS setup
+- LocalStack AWS SQS setup
 
 ## ✨ Wishlist (9)
 - Proper clean architecture setup
