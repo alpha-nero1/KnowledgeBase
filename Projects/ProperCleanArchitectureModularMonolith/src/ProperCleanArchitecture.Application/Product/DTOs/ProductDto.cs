@@ -1,4 +1,4 @@
-namespace ProperCleanArchitecture.Application.Products.Dtos;
+namespace ProperCleanArchitecture.Application.Product.DTOs;
 
 public class ProductDto
 {
