@@ -5,6 +5,10 @@
 A basic implementation of SQS. Leverages something called `LocalStack`. A really really super duper awesome tool that allows
 you to emulate 60+ AWS services locally on your machine (including SQS!) and dev locally without mucking around setting up you AWS env, you can just learn how to use the services instead without worrying about the cloud for now!
 
+## What is left to do?
+- Set it up
+- Run end to end.
+
 ## 🛠️ Project setup
 sln: `dotnet new sln -n BasicSQS`
 api: `dotnet new web -n api`
@@ -12,7 +16,7 @@ worker: `dotnet new worker -n worker`
 setup: `dotnet sln add api/api.csproj worker/worker.csproj`
 Spin up the localstack SQS: `docker compose up -d`
 download aws cli: https://awscli.amazonaws.com/AWSCLIV2.msi
-afterwards create your aws queue: 
+afterwards create your aws queue:
 ```
 aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name basic-queue
 aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name basic-dlq
@@ -34,7 +38,7 @@ aws --endpoint-url=http://localhost:4566 sqs set-queue-attributes \
 - If your worker receives a message and doesn't delete it, it becomes visible again.
 - After 3 receives (as per maxReceiveCount), SQS automatically moves it to the DLQ.
 
-## 🏎️ How to run 
+## 🏎️ How to run
 
 ## ⚖️ Final Remarks
 

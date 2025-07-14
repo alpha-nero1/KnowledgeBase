@@ -11,10 +11,10 @@ Inside this subfolder are demonstrations of how things can work.
 - ✅ [SmallLLM](./SmallLLM)
 - ✅ [SmallLLMPdfReading](./SmallLLMPdfReading)
 - ✅ [Kafka](./Kafka/)
-- LocalStack AWS SQS setup
+- 🛠️ LocalStack AWS SQS setup
+- 🛠️ Proper clean architecture setup
 
-## ✨ Wishlist (9)
-- Proper clean architecture setup
+## ✨ Wishlist (7)
 - Hangfire setup
 - Publish and run docker image of simple server
 - Module federation/micro front ends
