@@ -22,3 +22,4 @@ Inside this subfolder are demonstrations of how things can work.
 - React component library
 - Document service; word & pdf prefill + generation + storage + proper CLEAN architecture
 - Containerise a Pub/Sub applications and deploy them to AWS
+- Vectorising information into a custom LLM model.
