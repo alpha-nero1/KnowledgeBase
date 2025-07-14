@@ -1,5 +1,6 @@
 # Project specific
 **.pdf
+appsettings.Development.json
 
 # Python
 .venv
