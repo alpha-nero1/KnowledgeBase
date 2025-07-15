@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var config = builder.Configuration;
 
+services.AddControllers();
 ApplicationDependencyInjection.AddApplication(services);
 
 #endregion

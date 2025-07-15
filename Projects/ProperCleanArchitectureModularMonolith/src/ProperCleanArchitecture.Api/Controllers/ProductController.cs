@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using ProperCleanArchitecture.Application.Product.Queries;
 
 namespace ProperCleanArchitecture.Api.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class ProductController : ControllerBase
+public class ProductController : ApiControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> ListAsync()
     {
-        return Ok();
+        var products = Mediator.Send(new ListProductsQuery());
+        return Ok(products);
     }
 }

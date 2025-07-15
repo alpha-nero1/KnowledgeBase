@@ -1,6 +1,6 @@
 ﻿namespace ProperCleanArchitecture.Domain.Entities;
 
-public class Product
+public class Product : EntityBase
 {
     public Guid ProductId { get; set; }
     public string Name { get; set; } = default!;

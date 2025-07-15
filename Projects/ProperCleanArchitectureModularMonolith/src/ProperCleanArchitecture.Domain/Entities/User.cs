@@ -2,7 +2,7 @@ using System.Text;
 
 namespace ProperCleanArchitecture.Domain.Entities;
 
-public class User
+public class User : EntityBase
 {
     public int UserId { get; set; }
     public string FirstName { get; set; } = "";

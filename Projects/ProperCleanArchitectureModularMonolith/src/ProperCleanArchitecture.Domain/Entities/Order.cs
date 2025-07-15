@@ -1,6 +1,6 @@
 ﻿namespace ProperCleanArchitecture.Domain.Entities;
 
-public class Order
+public class Order : EntityBase
 {
     public int OrderId { get; set; }
     public Guid ProductId { get; set; }
