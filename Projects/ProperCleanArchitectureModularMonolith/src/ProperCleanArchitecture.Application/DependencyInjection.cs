@@ -18,7 +18,6 @@ public static class ApplicationDependencyInjection
 
         #region Feature level injection
 
-        ProductDependencyInjection.AddProduct(services);
         SharedDependencyInjection.AddShared(services);
 
         #endregion

@@ -8,10 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProperCleanArchitecture.Application\ProperCleanArchitecture.Application.csproj" />
+    <ProjectReference Include="..\ProperCleanArchitecture.Infrastructure\ProperCleanArchitecture.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

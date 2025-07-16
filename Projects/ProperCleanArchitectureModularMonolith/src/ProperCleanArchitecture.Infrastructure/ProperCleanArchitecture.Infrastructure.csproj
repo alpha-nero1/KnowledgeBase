@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProperCleanArchitecture.Domain\ProperCleanArchitecture.Domain.csproj" />
+    <ProjectReference Include="..\ProperCleanArchitecture.Contracts\ProperCleanArchitecture.Contracts.csproj" />
     <ProjectReference Include="..\ProperCleanArchitecture.Application\ProperCleanArchitecture.Application.csproj" />
   </ItemGroup>
 
@@ -12,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

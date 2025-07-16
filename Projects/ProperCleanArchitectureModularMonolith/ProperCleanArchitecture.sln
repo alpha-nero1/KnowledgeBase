@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchictecture.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchitecture.ArchitectureTests", "tests\ProperCleanArchitecture.ArchitectureTests\ProperCleanArchitecture.ArchitectureTests.csproj", "{B1234567-1234-1234-1234-123456789ABC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchitecture.Contracts", "src\ProperCleanArchitecture.Contracts\ProperCleanArchitecture.Contracts.csproj", "{88B6AD13-513B-46E0-B593-0C285521A482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{B1234567-1234-1234-1234-123456789ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1234567-1234-1234-1234-123456789ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1234567-1234-1234-1234-123456789ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B6AD13-513B-46E0-B593-0C285521A482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B6AD13-513B-46E0-B593-0C285521A482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B6AD13-513B-46E0-B593-0C285521A482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B6AD13-513B-46E0-B593-0C285521A482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8DB2FFC1-9B61-4D34-A545-9DFC8ACFB2D9} = {A8CF1DD7-088B-400B-A005-AD912F692D0E}
@@ -67,5 +73,6 @@ Global
 		{99EE9889-D617-4F26-9186-08D116FA1E6C} = {0C1A1A2A-F4EB-4CEB-86CB-B370186829A5}
 		{8D37255D-5012-4921-9127-665A53D8FF59} = {0C1A1A2A-F4EB-4CEB-86CB-B370186829A5}
 		{B1234567-1234-1234-1234-123456789ABC} = {0C1A1A2A-F4EB-4CEB-86CB-B370186829A5}
+		{88B6AD13-513B-46E0-B593-0C285521A482} = {A8CF1DD7-088B-400B-A005-AD912F692D0E}
 	EndGlobalSection
 EndGlobal

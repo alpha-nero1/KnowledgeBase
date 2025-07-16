@@ -1,5 +1,5 @@
 using AutoMapper;
-using ProperCleanArchitecture.Application.Product.DTOs;
+using ProperCleanArchitecture.Contracts.Product;
 
 namespace ProperCleanArchitecture.Application.Product.Profiles;
 

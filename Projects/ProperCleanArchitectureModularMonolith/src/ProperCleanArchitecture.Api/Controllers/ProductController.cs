@@ -8,7 +8,7 @@ public class ProductController : ApiControllerBase
     [HttpGet]
     public async Task<IActionResult> ListAsync()
     {
-        var products = Mediator.Send(new ListProductsQuery());
+        var products = await Mediator.Send(new ListProductsQuery());
         return Ok(products);
     }
 }

@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProperCleanArchitecture.Domain\ProperCleanArchitecture.Domain.csproj" />
+    <ProjectReference Include="..\ProperCleanArchitecture.Contracts\ProperCleanArchitecture.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

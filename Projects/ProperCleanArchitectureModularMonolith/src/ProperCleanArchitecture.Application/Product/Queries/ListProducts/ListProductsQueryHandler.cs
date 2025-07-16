@@ -1,22 +1,17 @@
 using AutoMapper;
 using MediatR;
-using ProperCleanArchitecture.Application.Product.DTOs;
 using ProperCleanArchitecture.Application.Product.Interfaces;
 using ProperCleanArchitecture.Application.Shared.Exceptions;
+using ProperCleanArchitecture.Contracts.Product;
 
-namespace ProperCleanArchitecture.Application.Product.Queries;
+namespace ProperCleanArchitecture.Application.Product.Queries.ListProducts;
 
-public record ListProductsQuery : IRequest<IEnumerable<ProductDto>>
-{
-
-}
-
-public class ListProductsHandler : IRequestHandler<ListProductsQuery, IEnumerable<ProductDto>>
+public class ListProductsQueryHandler : IRequestHandler<ListProductsQuery, IEnumerable<ProductDto>>
 {
     private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
 
-    public ListProductsHandler(IProductRepository productRepository, IMapper mapper)
+    public ListProductsQueryHandler(IProductRepository productRepository, IMapper mapper)
     {
         _productRepository = productRepository;
         _mapper = mapper;
