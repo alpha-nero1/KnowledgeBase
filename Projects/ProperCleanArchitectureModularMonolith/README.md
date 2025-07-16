@@ -47,3 +47,8 @@ Adding to this if your contracts change, you can version them! by adding `Proper
 This project is great because it demonstrates best practice for enterprise systems, ensuring that the product you are working on assumes the least amount of technical debt possible during development and allows extensibility into the microservice world.
 
 To be honest my favourite part of this set up though is having multiple modules (can eventually make into microservices) but it is all in the one solution, meaning having a shared Domain and logic is soooooo easy!
+
+
+## Shutdown
+- Add order placement.
+* Later you can make this into a template and use for the document procesing project.
