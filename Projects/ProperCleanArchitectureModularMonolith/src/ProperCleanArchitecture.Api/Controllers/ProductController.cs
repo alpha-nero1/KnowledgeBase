@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ProperCleanArchitecture.Application.Product.Queries;
+using ProperCleanArchitecture.Application.Product.Queries.ListProducts;
 
 namespace ProperCleanArchitecture.Api.Controllers;
 

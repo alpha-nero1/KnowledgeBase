@@ -6,21 +6,16 @@ using ProperCleanArchitecture.Contracts.Product;
 
 namespace ProperCleanArchitecture.Application.Product.Queries.ListProducts;
 
-public class ListProductsQueryHandler : IRequestHandler<ListProductsQuery, IEnumerable<ProductDto>>
+public class ListProductsQueryHandler(IProductRepository productRepository, IMapper mapper) 
+: IRequestHandler<ListProductsQuery, IEnumerable<ProductDto>>
 {
-    private readonly IProductRepository _productRepository;
-    private readonly IMapper _mapper;
-
-    public ListProductsQueryHandler(IProductRepository productRepository, IMapper mapper)
-    {
-        _productRepository = productRepository;
-        _mapper = mapper;
-    }
+    private readonly IProductRepository _productRepository = productRepository;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<IEnumerable<ProductDto>> Handle(ListProductsQuery request, CancellationToken ct)
     {
         var product = await _productRepository.ListAsync(ct);
-        if (product.Count() == 0)
+        if (!product.Any())
         {
             throw new EntityNotFoundException();
         }

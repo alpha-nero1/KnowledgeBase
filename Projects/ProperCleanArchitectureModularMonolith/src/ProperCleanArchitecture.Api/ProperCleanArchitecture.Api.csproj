@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProperCleanArchitecture.Application\ProperCleanArchitecture.Application.csproj" />
-    <ProjectReference Include="..\ProperCleanArchitecture.Infrastructure\ProperCleanArchitecture.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\ProperCleanArchitecture.Application\ProperCleanArchitecture.Application.csproj" />
+    <ProjectReference Include="..\..\src\ProperCleanArchitecture.Infrastructure\ProperCleanArchitecture.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

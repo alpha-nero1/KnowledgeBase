@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchitecture.Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0C1A1A2A-F4EB-4CEB-86CB-B370186829A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchictecture.UnitTests", "tests\ProperCleanArchictecture.UnitTests\ProperCleanArchictecture.UnitTests.csproj", "{99EE9889-D617-4F26-9186-08D116FA1E6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchictecture.Application.UnitTests", "tests\ProperCleanArchictecture.Application.UnitTests\ProperCleanArchictecture.Application.UnitTests.csproj", "{99EE9889-D617-4F26-9186-08D116FA1E6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProperCleanArchictecture.IntegrationTests", "tests\ProperCleanArchictecture.IntegrationTests\ProperCleanArchictecture.IntegrationTests.csproj", "{8D37255D-5012-4921-9127-665A53D8FF59}"
 EndProject

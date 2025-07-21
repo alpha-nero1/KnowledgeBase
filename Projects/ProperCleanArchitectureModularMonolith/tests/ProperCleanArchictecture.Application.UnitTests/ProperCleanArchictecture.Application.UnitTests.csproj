@@ -18,4 +18,7 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProperCleanArchitecture.Application\ProperCleanArchitecture.Application.csproj" />
+  </ItemGroup>
 </Project>
