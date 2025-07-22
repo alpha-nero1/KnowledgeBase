@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (7, 3)
+## 🗃️ Directory (9, 2)
 - ✅ [ActiveMQ](./ActiveMQ)
 - ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 - ✅ [SignalR](./SignalR/)
@@ -11,11 +11,12 @@ Inside this subfolder are demonstrations of how things can work.
 - ✅ [SmallLLM](./SmallLLM)
 - ✅ [SmallLLMPdfReading](./SmallLLMPdfReading)
 - ✅ [Kafka](./Kafka/)
+- ✅ [ProperCleanArchitecture](./ProperCleanArchitectureModularMonolith/) Proper clean architecture setup / Includes monolith
+- ✅ [ModularMonolith](./ProperCleanArchitectureModularMonolith/) Modular monolith
 - 🛠️ [LocalStackSQS](./LocalStackSQS/) LocalStack AWS SQS setup / Need to test
-- 🛠️ [ProperCleanArchitecture](./ProperCleanArchitectureModularMonolith/) Proper clean architecture setup / Includes monolith
-- 🛠️ [ModularMonolith](./ProperCleanArchitectureModularMonolith/) Modular monolith
+- 🛠️ [IntegrationTests](./IntegrationTests) Demonstrates integration test working.
 
-## ✨ Wishlist (6)
+## ✨ Wishlist (7)
 - Hangfire setup
 - Publish and run docker image of simple server
 - Module federation/micro front ends

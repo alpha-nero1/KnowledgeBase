@@ -48,7 +48,11 @@ This project is great because it demonstrates best practice for enterprise syste
 
 To be honest my favourite part of this set up though is having multiple modules (can eventually make into microservices) but it is all in the one solution, meaning having a shared Domain and logic is soooooo easy!
 
+### So how is this clean architecture?
+It is clean architecture because all dependencies point downwards, with the `infrastructure layer` depending on contracts from `application layer` leaving external responsibilities to the infrastructure layer exclusively (including DB access!)
 
-## Shutdown
-- Add order placement.
-* Later you can make this into a template and use for the document procesing project.
+### So how is this a modular monolith?
+It is because all app layers are split into distinct feature folders with clear split of concerns between each.
+
+Modules only talk to eachother using mediator calls which can later be replaced with
+API calls.
