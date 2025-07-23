@@ -15,6 +15,10 @@ public class NamingConventionTests
             .ResideInNamespaceContaining("Commands")
             .And()
             .AreClasses()
+            .And()
+            .DoNotHaveNameEndingWith("Handler")
+            .And()
+            .DoNotHaveNameEndingWith("Validator")
             .Should()
             .HaveNameEndingWith("Command")
             .GetResult();
@@ -31,6 +35,10 @@ public class NamingConventionTests
             .ResideInNamespaceContaining("Queries")
             .And()
             .AreClasses()
+            .And()
+            .DoNotHaveNameEndingWith("Handler")
+            .And()
+            .DoNotHaveNameEndingWith("Validator")
             .Should()
             .HaveNameEndingWith("Query")
             .GetResult();
