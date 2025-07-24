@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (9, 2)
+## 🗃️ Directory (11, 1)
 - ✅ [ActiveMQ](./ActiveMQ)
 - ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 - ✅ [SignalR](./SignalR/)
@@ -13,7 +13,8 @@ Inside this subfolder are demonstrations of how things can work.
 - ✅ [Kafka](./Kafka/)
 - ✅ [ProperCleanArchitecture](./ProperCleanArchitectureModularMonolith/) Proper clean architecture setup / Includes monolith
 - ✅ [ModularMonolith](./ProperCleanArchitectureModularMonolith/) Modular monolith
-- 🛠️ [LocalStackSQS](./LocalStackSQS/) LocalStack AWS SQS setup / Need to test
+- ✅ [LocalStackS3](./LocalStackS3/) LocalStack AWS S3 setup
+- ✅ [LocalStackSQS](./LocalStackSQS/) LocalStack AWS SQS setup / Need to test
 - 🛠️ [IntegrationTests](./IntegrationTests) Demonstrates integration test working.
 
 ## ✨ Wishlist (7)

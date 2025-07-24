@@ -39,21 +39,24 @@ public class MessageWorker : BackgroundService
 
             var response = await _sqs.ReceiveMessageAsync(request, stoppingToken);
 
-            foreach (var message in response.Messages)
+            if (response?.Messages is not null)
             {
-                try
+                foreach (var message in response.Messages)
                 {
-                    _logger.LogInformation($"Received message: {message.Body}");
-                    await ProcessMessage(JsonSerializer.Deserialize<BasicMessage>(message.Body)!);
+                    try
+                    {
+                        _logger.LogInformation($"Received message: {message.Body}");
+                        await ProcessMessage(JsonSerializer.Deserialize<BasicMessage>(message.Body)!);
 
-                    // Delete after processing
-                    await _sqs.DeleteMessageAsync(_queueUrl, message.ReceiptHandle, stoppingToken);
-                }
-                catch (Exception e)
-                {
-                    // Just log, nothing to do now, because DeleteMessageAsync was never called, it will get
-                    // picked up again later.
-                    _logger.LogError(e, "Received message: {body} encountered an issue", message.Body);
+                        // Delete after processing
+                        await _sqs.DeleteMessageAsync(_queueUrl, message.ReceiptHandle, stoppingToken);
+                    }
+                    catch (Exception e)
+                    {
+                        // Just log, nothing to do now, because DeleteMessageAsync was never called, it will get
+                        // picked up again later.
+                        _logger.LogError(e, "Received message: {body} encountered an issue", message.Body);
+                    }
                 }
             }
 

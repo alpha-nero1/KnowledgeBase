@@ -1,16 +1,18 @@
 using Amazon.SQS;
-using Amazon;
 using common.options;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var config = builder.Configuration;
 services.Configure<AwsOptions>(config.GetSection("AWS"));
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 if (builder.Environment.IsDevelopment())
 {
     // Fudge the IAmazonSQS credentials with LocalStack!
-    builder.Services.AddSingleton<IAmazonSQS>(_ =>
+    services.AddSingleton<IAmazonSQS>(_ =>
     {
         var cfg = new AmazonSQSConfig
         {
@@ -24,6 +26,13 @@ if (builder.Environment.IsDevelopment())
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
