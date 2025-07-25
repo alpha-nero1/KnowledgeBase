@@ -1,5 +1,6 @@
 # 🧠 Projects / ProperCleanArchitectureModularMonolith
-> ℹ️ This repository does reflect best practices.
+> [!NOTE]
+> This repository does reflect best practices.
 
 ## 🤷‍♂️ What does it do?
 This project is an ideal model of what a CleanArchitecture Modular Monolith project should look like.

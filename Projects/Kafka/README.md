@@ -1,5 +1,6 @@
 # 🎆 Projects / Kafka
-> *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 ## 🤷‍♂️ What does it do?
 This project demonstrates a simple Apache Kafka and Zookeper setup.

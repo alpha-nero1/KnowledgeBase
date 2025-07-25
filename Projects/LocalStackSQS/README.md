@@ -1,6 +1,6 @@
 # 📦 Projects / BasicSQS
 > [!WARNING]
-> *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 ## 🤷‍♂️ What does it do?
 A basic implementation of SQS. Leverages something called `LocalStack`. A really really super duper awesome tool that allows

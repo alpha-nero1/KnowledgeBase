@@ -1,5 +1,6 @@
 # 🐇 Projects / RabbitMQWithMassTransit
-*⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 ## 🛠️ Project creation
 sln: `dotnet new sln -n ActiveMQ`

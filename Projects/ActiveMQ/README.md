@@ -1,5 +1,6 @@
 # 🎯 Projects / ActiveMQ
-*⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 Demonstrates an ActiveMQ pub/sub application with net8.0.
 

@@ -1,5 +1,6 @@
 # 📨 Projects / SignalR
-*⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 Demonstrates how a very simple websocket setup can work with dotnet and react.
 

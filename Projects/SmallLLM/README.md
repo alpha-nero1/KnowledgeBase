@@ -1,7 +1,9 @@
 # 👾 Projects / SmallLLM
-> *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
-> *⚠️Running AI is processor intensive and optimal if you have a GPU enabled (Nvidia seems to be the only one that works)*
+> [!WARNING]
+> *Running AI is processor intensive and optimal if you have a GPU enabled (Nvidia seems to be the only one that works)*
 
 ## 🤷‍♂️ What does it do?
 Sets up a simple AI chat bot that you can chat with on your local machine, it's great, give it a go!

@@ -1,7 +1,9 @@
 # 👾 Projects / SmallLLMPdfReading
-> *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
-> *⚠️Running AI is processor intensive and optimal if you have a GPU enabled (Nvidia seems to be the only one that works)*
+> [!WARNING]
+> *Running AI is processor intensive and optimal if you have a GPU enabled (Nvidia seems to be the only one that works)*
 
 ## 🤷‍♂️ What does it do?
 This project reads a directory of pdfs that you have in `/docs` and one you start it you can ask questions about those documents! All the while without an internet connection (AI is local).

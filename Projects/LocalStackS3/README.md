@@ -1,6 +1,6 @@
 # 📚 Projects / LocalStackS3
-> [!NOTE] 
-> *⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 ## 🤷‍♂️ What does it do?
 This project is a simple web api for uploading & retrieving images from an S3 bucket, using LocalStack to simulate the Amazon S3 environment.

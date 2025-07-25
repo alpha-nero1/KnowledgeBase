@@ -1,5 +1,6 @@
 # 📨 Projects / SignalRMultiInstanceAndBackplane
-*⚠️The code in this project is NOT best practice; for demonstration purposes ONLY*
+> [!WARNING]
+> *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 Demonstrates a scalable solution with SignalR.
 
