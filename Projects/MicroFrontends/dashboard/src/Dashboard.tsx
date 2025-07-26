@@ -1,6 +1,6 @@
 import React from 'react';
 // @ts-ignore
-import Button from 'shared_ui/Button';
+import { Button } from '@shared-ui';
 
 const Dashboard: React.FC = () => {
   return (

@@ -12,15 +12,12 @@ export default defineConfig({
       exposes: {
         './Dashboard': './src/Dashboard.tsx',
       },
-      shared: ['react', 'react-dom'],
-      remotes: {
-        shared_ui: 'http://localhost:3003/assets/remoteEntry.js',
-      },
+      shared: ['react', 'react-dom']
     }),
   ],
   resolve: {
     alias: {
-      '@shared_ui': path.resolve(__dirname, '../shared_ui')
+      '@shared-ui': path.resolve(__dirname, '../shared-ui')
     }
   },
   server: {

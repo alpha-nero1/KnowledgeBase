@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@shared_ui/*": ["../shared_ui/*"]
+      "@shared-ui/*": ["../shared-ui/*"]
     }
   },
   "files": [],

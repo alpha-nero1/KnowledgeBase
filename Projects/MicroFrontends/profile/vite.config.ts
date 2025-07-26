@@ -13,17 +13,20 @@ export default defineConfig({
         './Profile': './src/Profile.tsx',
       },
       shared: ['react', 'react-dom'],
-      remotes: {
-        shared_ui: 'http://localhost:3003/assets/remoteEntry.js',
-      },
-    }),
+    })
   ],
   resolve: {
     alias: {
-      '@shared_ui': path.resolve(__dirname, '../shared_ui')
+      '@shared-ui': path.resolve(__dirname, '../shared-ui')
     }
   },
+  optimizeDeps: {
+    exclude: ['@shared-ui']
+  },
   server: {
-    port: 3002
+    port: 3002,
+    fs: {
+      allow: ['..'],
+    }
   },
 });

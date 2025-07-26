@@ -10,7 +10,7 @@ export default defineConfig({
       remotes: {
         dashboard: 'http://localhost:3001/assets/remoteEntry.js',
         profile: 'http://localhost:3002/assets/remoteEntry.js',
-        shared_ui: 'http://localhost:3003/assets/remoteEntry.js',
+        shared-ui: 'http://localhost:3003/assets/remoteEntry.js',
       },
       shared: ['react', 'react-dom'],
     }),
