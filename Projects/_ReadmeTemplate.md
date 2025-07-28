@@ -3,6 +3,8 @@
 
 ## 🤷‍♂️ What does it do?
 
+## 👷 How does it work?
+
 
 ## 🛠️ Project setup
 

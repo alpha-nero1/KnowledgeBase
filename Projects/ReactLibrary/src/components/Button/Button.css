@@ -1,0 +1,79 @@
+.rl-button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.rl-button:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Variants */
+.rl-button--primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.rl-button--primary:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.rl-button--secondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.rl-button--secondary:hover:not(:disabled) {
+  background-color: #e5e7eb;
+}
+
+.rl-button--danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.rl-button--danger:hover:not(:disabled) {
+  background-color: #dc2626;
+}
+
+/* Sizes */
+.rl-button--small {
+  padding: 6px 12px;
+  font-size: 12px;
+  min-height: 28px;
+}
+
+.rl-button--medium {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+}
+
+.rl-button--large {
+  padding: 12px 20px;
+  font-size: 16px;
+  min-height: 44px;
+}
+
+/* States */
+.rl-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rl-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
