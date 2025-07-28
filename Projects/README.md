@@ -18,7 +18,7 @@ Inside this subfolder are demonstrations of how things can work.
 12. ✅ [IntegrationTests](./IntegrationTests) Demonstrates integration test working.
 13. ✅ [SimpleRemoteFrontend](./SimpleRemoteFrontend) Demonstrates simple remote front end/micro frontend example.
 14. ✅ [MicroFrontends](./MicroFrontends/) Comprehensive micro front end example.
-15. ✅ [ReactLibrary](./ReactLibrary) React component library.
+15. ✅ [ReactLibrary](./ReactLibrary) React component library - with storybook!
 16. [VirtualDOM](./VirtualDOM) Virtual DOM implementation.
 
 ## ✨ Wishlist (5)
