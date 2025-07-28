@@ -1,6 +1,8 @@
 # Project specific
 **.pdf
 appsettings.Development.json
+**.DS_Store
+**.__mf__temp
 
 # Python
 .venv

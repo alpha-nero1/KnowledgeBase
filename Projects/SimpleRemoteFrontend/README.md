@@ -1,12 +1,9 @@
-# 🧰 Projects / MicroFrontends
+# 🧰 Projects / SimpleRemoteFrontend <name>
 > [!WARNING]
 > *The code in this project is NOT best practice; for demonstration purposes ONLY*
 
 ## 🤷‍♂️ What does it do?
-This project demonstrates key features of an effective microfrontend setup. These include:
-- ✅ Host app that loads remote apps (micro frontends)
-- ✅ Host app employs standard structure & **routing** to the overall application.
-- ✅ 
+This project demonstrates how a minimal example of microfrontend architecture works. This project levergaes a key feature of vite in order to facilitate the microfrontend architecture, that is; module federaton.
 
 ## 🛠️ Project setup
 ```

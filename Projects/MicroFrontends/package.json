@@ -1,32 +1,18 @@
 {
-  "name": "microfrontends",
+  "name": "MicroFrontends",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "dev:all": "concurrently \"npm run dev\" \"cd dashboard && npm run dev\" \"cd profile && npm run dev\""
-  },
-  "dependencies": {
-    "@module-federation/vite": "^1.7.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "i:all": "cd dashboard && npm i && cd ../profile && npm i && cd ../host-app && npm i",
+    "build": "concurrently --kill-others \"npm run b:dashboard\" \"npm run b:profile\"",
+    "start": "concurrently --kill-others \"npm run d:host\" \"npm run s:dashboard\" \"npm run s:profile\"",
+    "d:host": "cd host-app && npm run dev",
+    "b:dashboard": "cd dashboard && npm run build:watch",
+    "b:profile": "cd profile && npm run build:watch",
+    "s:dashboard": "cd dashboard && npm run start",
+    "s:profile": "cd profile && npm run start"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "concurrently": "^7.6.0",
-    "eslint": "^9.30.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.4"
+    "concurrently": "^9.2.0"
   }
 }

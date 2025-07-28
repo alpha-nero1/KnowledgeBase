@@ -1,0 +1,14 @@
+{
+  "name": "microfrontend-example",
+  "version": "1.0.0",
+  "description": "Microfrontend example with Vite and React",
+  "scripts": {
+    "install:all": "cd host-app && npm install && cd ../remote-app && npm install",
+    "start:remote": "cd remote-app && npm run dev",
+    "start:host": "cd host-app && npm run dev",
+    "build:all": "cd remote-app && npm run build && cd ../host-app && npm run build"
+  },
+  "keywords": ["microfrontend", "vite", "react", "module-federation"],
+  "author": "",
+  "license": "MIT"
+}
