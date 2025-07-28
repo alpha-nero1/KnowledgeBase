@@ -9,6 +9,7 @@ export default defineConfig({
     federation({
       name: 'host_app',
       remotes: {
+        // THIS is the magic right here, we need to specify type: module
         dashboardApp: {
 					type: 'module',
 					name: 'dashboardApp',
@@ -22,10 +23,7 @@ export default defineConfig({
 					entry: 'http://localhost:3002/remoteEntry.js',
 					entryGlobalName: 'profileApp',
 					shareScope: 'default'
-				},
-        // remoteEntry only served on vite build + vite preview
-        //dashboardApp: 'http://localhost:3001/assets/remoteEntry.js',
-        //profileApp: 'http://localhost:3002/assets/remoteEntry.js'
+				}
       },
       shared: {
         react: { 

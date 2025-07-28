@@ -4,13 +4,10 @@
   "version": "0.0.0",
   "scripts": {
     "i:all": "cd dashboard && npm i && cd ../profile && npm i && cd ../host-app && npm i",
-    "build": "concurrently --kill-others \"npm run b:dashboard\" \"npm run b:profile\"",
-    "start": "concurrently --kill-others \"npm run d:host\" \"npm run s:dashboard\" \"npm run s:profile\"",
+    "d:all": "concurrently --kill-others \"npm run d:host\" \"npm run d:dashboard\" \"npm run d:profile\"",
     "d:host": "cd host-app && npm run dev",
-    "b:dashboard": "cd dashboard && npm run build:watch",
-    "b:profile": "cd profile && npm run build:watch",
-    "s:dashboard": "cd dashboard && npm run start",
-    "s:profile": "cd profile && npm run start"
+    "d:dashboard": "cd dashboard && npm run dev",
+    "d:profile": "cd profile && npm run dev"
   },
   "devDependencies": {
     "concurrently": "^9.2.0"

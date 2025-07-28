@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (13, 1)
+## 🗃️ Directory (14)
 1. ✅ [ActiveMQ](./ActiveMQ)
 2. ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3. ✅ [SignalR](./SignalR/)
@@ -17,12 +17,13 @@ Inside this subfolder are demonstrations of how things can work.
 11. ✅ [LocalStackSQS](./LocalStackSQS/) LocalStack AWS SQS setup / Need to test
 12. ✅ [IntegrationTests](./IntegrationTests) Demonstrates integration test working.
 13. ✅ [SimpleRemoteFrontend](./SimpleRemoteFrontend) Demonstrates simple remote front end/micro frontend example.
-- Module federation/micro front ends
+14. ✅ [MicroFrontends](./MicroFrontends/) Comprehensive micro front end example.
+15. [ReactLibrary](./ReactLibrary) React component library.
 
-## ✨ Wishlist (7)
+## ✨ Wishlist (6)
 - Hangfire setup
 - Publish and run docker image of simple server
-- React component library
+- Virtual DOM implementation.
 - Document service; word & pdf prefill + generation + storage + proper CLEAN architecture
 - Containerise a Pub/Sub applications and deploy them to AWS
 - Vectorising information into a custom LLM model.

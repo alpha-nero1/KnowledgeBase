@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { federation } from '@module-federation/vite';
-// import path from 'path';
+import path from 'path';
 
 export default defineConfig({
   plugins: [
@@ -24,17 +24,11 @@ export default defineConfig({
       }
     })
   ],
-  // resolve: {
-  //   alias: {
-  //     '@shared-ui': path.resolve(__dirname, '../shared-ui')
-  //   }
-  // },
-  // server: {
-  //   port: 3002,
-  //   fs: {
-  //     allow: ['..'],
-  //   }
-  // },
+  resolve: {
+    alias: {
+      '@shared-ui': path.resolve(__dirname, '../shared-ui')
+    }
+  },
   build: {
     modulePreload: false,
     target: 'esnext',
