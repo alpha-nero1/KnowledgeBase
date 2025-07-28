@@ -11,11 +11,12 @@ const equals = (arrayOne = [], arrayTwo = []) => {
 }
 
 export const useEffect = (effect, deps = []) => {
-    const newIndex = globalState.effectIndex++;
+    const currentIndex = globalState.effectIndex++;
 
     // if dependencies have not changed, return.
-    const existingDeps = globalState.effectDependencies[newIndex]
+    const existingDeps = globalState.effectDependencies[currentIndex]
     if (equals(existingDeps, deps)) return;
-    
-    globalState.effectDependencies[newIndex] = deps;
+
+    // Re-assign new dependencies.
+    globalState.effectDependencies[currentIndex] = deps;
 }
