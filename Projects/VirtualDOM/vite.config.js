@@ -5,7 +5,7 @@ export default defineConfig({
     rollupOptions: {
       input: 'index.js',
       output: {
-        entryFileNames: 'app.js',
+        entryFileNames: 'index.js',
         format: 'iife', // Immediately Invoked Function Expression - works without modules
         name: 'vero' // Global variable name
       }

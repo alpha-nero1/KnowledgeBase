@@ -8,34 +8,35 @@ export const App = () => {
   const [customColor, setCustomColor] = useState(colors[1]);
 
   useEffect(() => {
-    if (selectedColor === customColor) {
-      console.log('Selected color is the same as custom color.');
-    }
+    // Logging demonstrates that use effect is working!
+    console.log('Color changed:', selectedColor, customColor);
     return () => {
       console.log('Cleanup function called for color change.');
     }
   }, [selectedColor, customColor]);
 
-  return vero('div', null,
+  return vero('div', { id: 'color-app' },
     vero('h4', null, 'Selected Color:'),
     vero('div', {
       className: 'color-box',
-      style: { backgroundColor: selectedColor }
-    }),
-    vero('p', null, `Color: ${selectedColor}`),
-
+      style: { backgroundColor: selectedColor, width: '140px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center' }
+    }, 
+      vero('p', { style: { backgroundColor: 'white', padding: '4px', color: selectedColor, fontWeight: 'bold', borderRadius: '4px' } }, `Color: ${selectedColor}`)
+    ),
     vero('h4', null, 'Pick a color:'),
-    vero('div', null,
+    vero('div', { style: { display: 'flex', gap: '10px' } },
       ...colors.map(color =>
-        vero('div', {
+        vero('button', {
           key: color,
           className: 'color-box',
-          style: { backgroundColor: color },
-          onClick: () => setSelectedColor(color)
+          style: { backgroundColor: color, width: '100px', height: '50px', outline: 'none', border: 'none' },
+          onClick: () => {
+            console.log(`Color ${color} clicked`);
+            setSelectedColor(color)
+          }
         })
       )
     ),
-
     vero('h4', null, 'Custom color:'),
     vero('input', {
       type: 'color',

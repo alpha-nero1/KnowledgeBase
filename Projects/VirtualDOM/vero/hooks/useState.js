@@ -1,7 +1,7 @@
 import { globalState } from '../globalState.js';
 
 /**
- * Basic useState hook for functional components
+ * State hook implementation!
  */
 export function useState(initialValue) {
   // Hey this is really clever!
@@ -18,9 +18,11 @@ export function useState(initialValue) {
     }
     
     // Trigger re-render
-    if (globalState.rerenderFn) {
-      globalState.rerenderFn();
+    if (typeof globalState.rerenderFn !== 'function') {
+      throw new Error('Rerender function is not set. Ensure that it is and that this hook is used within a component context');
     }
+
+    globalState.rerenderFn();
   };
 
   return [globalState.states[index], setState];

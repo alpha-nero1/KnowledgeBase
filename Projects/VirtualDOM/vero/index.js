@@ -1,9 +1,9 @@
-import { globalState } from './globalState.js';
+import { globalState, resetGlobalState } from './globalState.js';
 import { useState } from './hooks/useState.js';
 import { useEffect } from './hooks/useEffect.js';
 
 /**
- * Creates a virtual DOM element (JSX factory function)
+ * Scaffolds our component into object notation allowing easy processing by the materialise() function.
  */
 export function vero(type, props, ...children) {
   const flatChildren = children
@@ -24,24 +24,23 @@ export function vero(type, props, ...children) {
 export const Fragment = 'FRAGMENT';
 
 /**
- * Renders a virtual DOM node to real DOM
+ * 'Materialises' a virtual DOM node to real DOM node.
+ * This method is recursive so that it can handle the necessary nested structure of
+ * our application.
  */
-export const render = (virtualNode) => {
+export const materialise = (virtualNode) => {
   if (typeof virtualNode === 'string') {
     return document.createTextNode(virtualNode);
   }
 
   if (typeof virtualNode.type === 'function') {
-    // Function component
-    globalState.stateIndex = 0; // Reset state index for this component
-    globalState.effectIndex = 0; // Reset effect index for this component
-    return render(virtualNode.type(virtualNode.props));
+    return materialise(virtualNode.type(virtualNode.props));
   }
 
   if (virtualNode.type === Fragment) {
     const fragment = document.createDocumentFragment();
     virtualNode.children.forEach(child => {
-      const childNode = render(child);
+      const childNode = materialise(child);
       if (childNode) fragment.appendChild(childNode);
     });
     return fragment;
@@ -50,7 +49,7 @@ export const render = (virtualNode) => {
   // Regular element
   const element = document.createElement(virtualNode.type);
 
-  // Set props
+  // Props assignment engine:
   Object.keys(virtualNode.props).forEach(key => {
     if (key === 'onClick') {
       element.addEventListener('click', virtualNode.props[key]);
@@ -70,9 +69,9 @@ export const render = (virtualNode) => {
     }
   });
 
-  // Render children
+  // Render children!
   virtualNode.children.forEach(child => {
-    const childNode = render(child);
+    const childNode = materialise(child);
     if (childNode) element.appendChild(childNode);
   });
 
@@ -83,22 +82,18 @@ export const render = (virtualNode) => {
  * Simple app creation and mounting
  */
 export const createApp = (entryComponent, container) => {
-  let currentNode = null;
-
   const clearContainer = () => { container.innerHTML = ''; };
 
   const render = () => {
     // Clever! on each rerender pass you need to reset the stateIndex so
     // all of the subsuquent useState are evaluated correctly.
-    globalState.stateIndex = 0;
-    globalState.effectIndex = 0;
+    resetGlobalState();
     const virtualNode = entryComponent();
 
     // Simple replace strategy (not efficient but simple)
     clearContainer();
-    const realNode = render(virtualNode);
+    const realNode = materialise(virtualNode);
     container.appendChild(realNode);
-    currentNode = realNode;
   };
 
   // Set global rerender function
