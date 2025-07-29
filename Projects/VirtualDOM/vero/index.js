@@ -1,4 +1,6 @@
 import { globalState } from './globalState.js';
+import { useState } from './hooks/useState.js';
+import { useEffect } from './hooks/useEffect.js';
 
 /**
  * Creates a virtual DOM element (JSX factory function)
@@ -32,6 +34,7 @@ export const render = (virtualNode) => {
   if (typeof virtualNode.type === 'function') {
     // Function component
     globalState.stateIndex = 0; // Reset state index for this component
+    globalState.effectIndex = 0; // Reset effect index for this component
     return render(virtualNode.type(virtualNode.props));
   }
 
@@ -46,7 +49,7 @@ export const render = (virtualNode) => {
 
   // Regular element
   const element = document.createElement(virtualNode.type);
-  
+
   // Set props
   Object.keys(virtualNode.props).forEach(key => {
     if (key === 'onClick') {
@@ -88,8 +91,9 @@ export const createApp = (entryComponent, container) => {
     // Clever! on each rerender pass you need to reset the stateIndex so
     // all of the subsuquent useState are evaluated correctly.
     globalState.stateIndex = 0;
+    globalState.effectIndex = 0;
     const virtualNode = entryComponent();
-    
+
     // Simple replace strategy (not efficient but simple)
     clearContainer();
     const realNode = render(virtualNode);
@@ -117,3 +121,6 @@ if (typeof window !== 'undefined') {
   window.vero = vero;
   window.Fragment = Fragment;
 }
+
+// Export hooks and other functions
+export { useState, useEffect };

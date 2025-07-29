@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: 'index.js',
+      output: {
+        entryFileNames: 'app.js',
+        format: 'iife', // Immediately Invoked Function Expression - works without modules
+        name: 'vero' // Global variable name
+      }
+    },
+    outDir: 'dist'
+  },
   esbuild: {
     loader: { '.js': 'jsx' },
     jsx: 'transform',
-    jsxFactory: 'h',
+    jsxFactory: 'vero',
     jsxFragment: 'Fragment',
   },
   server: {
