@@ -2,8 +2,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Scheduler.Application\Scheduler.Application.csproj" />
-    <ProjectReference Include="..\Scheduler.Domain\Scheduler.Domain.csproj" />
-    <ProjectReference Include="..\Scheduler.Contracts\Scheduler.Contracts.csproj" />
+    <ProjectReference Include="..\core\Scheduler.Domain\Scheduler.Domain.csproj" />
+    <ProjectReference Include="..\core\Scheduler.Contracts\Scheduler.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire" Version="1.8.20" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.20" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.20" />
+    <PackageReference Include="Hangfire.SQLite" Version="1.4.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Scheduler.Domain\Scheduler.Domain.csproj" />
-    <ProjectReference Include="..\Scheduler.Contracts\Scheduler.Contracts.csproj" />
+    <ProjectReference Include="..\core\Scheduler.Domain\Scheduler.Domain.csproj" />
+    <ProjectReference Include="..\core\Scheduler.Contracts\Scheduler.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -13,11 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Worker", "src\pre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Application", "src\Scheduler.Application\Scheduler.Application.csproj", "{C3002608-3744-4182-B75C-F4FAF2AA1946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Contracts", "src\Scheduler.Contracts\Scheduler.Contracts.csproj", "{C8D37257-ADDD-4CAA-950D-9E5A949425DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Contracts", "src\core\Scheduler.Contracts\Scheduler.Contracts.csproj", "{C8D37257-ADDD-4CAA-950D-9E5A949425DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Infrastructure", "src\Scheduler.Infrastructure\Scheduler.Infrastructure.csproj", "{E010857E-8272-4A7F-98E5-A2406FB04955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Domain", "src\Scheduler.Domain\Scheduler.Domain.csproj", "{BB13701E-8CF2-4A9A-AC9B-1B81CC0443B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler.Domain", "src\core\Scheduler.Domain\Scheduler.Domain.csproj", "{BB13701E-8CF2-4A9A-AC9B-1B81CC0443B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EA3105A4-F765-4238-90A0-521A931B3F9C}"
 EndProject
