@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scheduler.Application\Scheduler.Application.csproj" />
+    <ProjectReference Include="..\Scheduler.Domain\Scheduler.Domain.csproj" />
+    <ProjectReference Include="..\Scheduler.Contracts\Scheduler.Contracts.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

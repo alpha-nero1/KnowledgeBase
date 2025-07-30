@@ -20,7 +20,7 @@ Inside this subfolder are demonstrations of how things can work.
 14. ✅ [MicroFrontends](./MicroFrontends/) Comprehensive micro front end example.
 15. ✅ [ReactLibrary](./ReactLibrary) React component library - with storybook!
 16. ✅ [VirtualDOM](./VirtualDOM) Virtual DOM implementation (vero).
-17. Hangfire setup
+17. [Scheduler](./Scheduler) Hangfire scheduler setup
 
 ## ✨ Wishlist (4)
 - Publish and run docker image of simple server
