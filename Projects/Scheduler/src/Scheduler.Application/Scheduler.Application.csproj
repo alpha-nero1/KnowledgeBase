@@ -2,11 +2,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\core\Scheduler.Domain\Scheduler.Domain.csproj" />
+    <ProjectReference Include="..\core\Scheduler.Core\Scheduler.Core.csproj" />
     <ProjectReference Include="..\core\Scheduler.Contracts\Scheduler.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Scrutor" Version="5.0.1" />
   </ItemGroup>
 
   <PropertyGroup>

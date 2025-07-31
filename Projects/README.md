@@ -22,7 +22,8 @@ Inside this subfolder are demonstrations of how things can work.
 16. ✅ [VirtualDOM](./VirtualDOM) Virtual DOM implementation (vero).
 17. [Scheduler](./Scheduler) Hangfire scheduler setup
 
-## ✨ Wishlist (4)
+## ✨ Wishlist (5)
+- CRON job setup
 - Publish and run docker image of simple server
 - Document service; word & pdf prefill + generation + storage + proper CLEAN architecture
 - Containerise a Pub/Sub applications and deploy them to AWS

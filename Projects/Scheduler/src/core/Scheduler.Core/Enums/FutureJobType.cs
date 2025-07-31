@@ -1,6 +1,6 @@
 namespace Scheduler.Core.Enums;
 
-public enum JobType
+public enum FutureJobType
 {
     SimpleLog
 }

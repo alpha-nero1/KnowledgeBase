@@ -1,10 +1,14 @@
-﻿using Scheduler.Contracts.Scheduling;
+﻿using Scheduler.Core.Enums;
+using Scheduler.Domain.Entities;
 
 namespace Scheduler.Application.Scheduling.Interfaces;
 
+/// <summary>
+/// A service to manage scheduling of future jobs.
+/// </summary>
 public interface ISchedulerService
 {
-    Task<string> ScheduleJobAsync(Job job);
-    Task CancelJobAsync(string jobId);
-    Task<bool> RescheduleJobAsync(string jobId, DateTime newExecuteTime);
+    Task<FutureJob> ScheduleJobAsync(int orderId, FutureJobType jobType, DateTime executeAt);
+    Task CancelJobAsync(int futureJobId);
+    Task<FutureJob> RescheduleJobAsync(int futureJobId, DateTime newExecuteAt);
 }

@@ -3,7 +3,7 @@ using Scheduler.Application.Scheduling.Interfaces;
 
 namespace Scheduler.Application.Scheduling.Commands;
 
-public class ScheduleJobCommandHandler : IRequestHandler<ScheduleJobCommand, string>
+public class ScheduleJobCommandHandler : IRequestHandler<ScheduleJobCommand, int>
 {
     private readonly ISchedulerService _schedulerService;
 
@@ -12,9 +12,9 @@ public class ScheduleJobCommandHandler : IRequestHandler<ScheduleJobCommand, str
         _schedulerService = schedulerService;
     }
 
-    public async Task<string> Handle(ScheduleJobCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(ScheduleJobCommand request, CancellationToken cancellationToken)
     {
-        var jobId = await _schedulerService.ScheduleJobAsync(request.Job);
-        return jobId;
+        var job = await _schedulerService.ScheduleJobAsync(request.OrderId, request.Type, request.ExecuteAt);
+        return job.FutureJobId;
     }
 }

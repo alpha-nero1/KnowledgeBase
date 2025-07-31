@@ -1,6 +1,13 @@
 using MediatR;
-using Scheduler.Contracts.Scheduling;
+using Scheduler.Core.Enums;
 
 namespace Scheduler.Application.Scheduling.Commands;
 
-public record ScheduleJobCommand(Job Job) : IRequest<string>;
+/// <summary>
+/// Schedule a job, return FutureJobId.
+/// </summary>
+public record ScheduleJobCommand(
+    int OrderId, 
+    FutureJobType Type, 
+    DateTime ExecuteAt
+) : IRequest<int>;
