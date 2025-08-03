@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Scheduler.Application.Scheduling.Interfaces;
 using Scheduler.Application.Scheduling.Queries;
-using System.Reflection;
 
 namespace Scheduler.Application;
 
