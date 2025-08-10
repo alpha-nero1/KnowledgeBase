@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (16, 1)
+## 🗃️ Directory (16, 2)
 1. ✅ [ActiveMQ](./ActiveMQ)
 2. ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3. ✅ [SignalR](./SignalR/)
@@ -21,10 +21,10 @@ Inside this subfolder are demonstrations of how things can work.
 15. ✅ [ReactLibrary](./ReactLibrary) React component library - with storybook!
 16. ✅ [VirtualDOM](./VirtualDOM) Virtual DOM implementation (vero).
 17. [Scheduler](./Scheduler) Hangfire scheduler setup
+18. CRON job setup
 
-## ✨ Wishlist (5)
-- CRON job setup
+## ✨ Wishlist (4)
 - Publish and run docker image of simple server
 - Document service; word & pdf prefill + generation + storage + proper CLEAN architecture
-- Containerise a Pub/Sub applications and deploy them to AWS
+- Containerise a Pub/Sub applications and deploy them to AWS (set up easy deployment pipelines)
 - Vectorising information into a custom LLM model.
