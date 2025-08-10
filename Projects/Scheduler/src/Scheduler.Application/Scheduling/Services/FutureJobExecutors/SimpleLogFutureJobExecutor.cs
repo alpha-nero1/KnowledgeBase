@@ -8,11 +8,9 @@ namespace Scheduler.Application.Scheduling.Services.FutureJobExecutors;
 /// <summary>
 /// Simple log executor for demonstration purposes.
 /// </summary>
-public class SimpleLogFutureJobExecutor(ILogger<SimpleLogFutureJobExecutor> logger) : IFutureJobExecutor
+public class SimpleLogFutureJobExecutor(ILogger<SimpleLogFutureJobExecutor> _logger) : IFutureJobExecutor
 {
     public FutureJobType Type => FutureJobType.SimpleLog;
-    private readonly ILogger<SimpleLogFutureJobExecutor> _logger = logger;
-    
     public Task ExecuteAsync(FutureJobDto futureJob)
     {
         _logger.LogInformation("Executing SimpleLogFutureJobExecutor for FutureJobId: {FutureJobId}, OrderId: {OrderId}, Type: {Type}, ExecuteAt: {ExecuteAt}",

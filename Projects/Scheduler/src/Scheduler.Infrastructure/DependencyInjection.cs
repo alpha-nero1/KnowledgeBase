@@ -2,11 +2,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Hangfire;
+using Hangfire.PostgreSql;
 using Scheduler.Infrastructure.Persistence;
 using Scheduler.Infrastructure.Scheduling.Services;
 using Scheduler.Infrastructure.Scheduling.Repositories;
 using Scheduler.Application.Scheduling.Interfaces;
-using Hangfire.Storage.SQLite;
 
 namespace Scheduler.Infrastructure;
 
@@ -19,18 +19,18 @@ public static class InfrastructureDependencyInjection
     )
     {
         string connectionString = configuration.GetConnectionString("DefaultConnection")!;
-        // Register DbContext with SQLite
+        
+        // Register DbContext with PostgreSQL
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite(connectionString));
+            options.UseNpgsql(connectionString));
 
-        // Register Hangfire (simplified configuration)
-        // Configure Hangfire with SQLite storage (shared between API and Worker)
+        // Configure Hangfire with PostgreSQL storage (shared between API and Worker)
         services.AddHangfire(config => 
         {
             config.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
                   .UseSimpleAssemblyNameTypeSerializer()
                   .UseRecommendedSerializerSettings()
-                  .UseSQLiteStorage(connectionString);
+                  .UsePostgreSqlStorage(c => c.UseNpgsqlConnection(connectionString));
         });
 
         // Only add hangfire server if not in API mode!

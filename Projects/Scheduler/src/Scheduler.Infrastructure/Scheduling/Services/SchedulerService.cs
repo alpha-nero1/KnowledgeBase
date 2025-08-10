@@ -6,23 +6,12 @@ using Scheduler.Domain.Entities;
 
 namespace Scheduler.Infrastructure.Scheduling.Services;
 
-public class SchedulerService : ISchedulerService
+public class SchedulerService(
+    IFutureJobRepository _futureJobRepository,
+    IBackgroundJobClient _backgroundJobClient,
+    IEnumerable<IFutureJobExecutor> _executors
+) : ISchedulerService
 {
-    private readonly IFutureJobRepository _futureJobRepository;
-    private readonly IBackgroundJobClient _backgroundJobClient;
-    private readonly IEnumerable<IFutureJobExecutor> _executors;
-
-    public SchedulerService(
-        IFutureJobRepository futureJobRepository,
-        IBackgroundJobClient backgroundJobClient,
-        IEnumerable<IFutureJobExecutor> executors
-    )
-    {
-        _futureJobRepository = futureJobRepository;
-        _backgroundJobClient = backgroundJobClient;
-        _executors = executors;
-    }
-
     public async Task<FutureJob> ScheduleJobAsync(int orderId, FutureJobType type, DateTime executeAt)
     {
         // Create domain entity
@@ -143,6 +132,8 @@ public class SchedulerService : ISchedulerService
             futureJob.ExecuteAt = newExecuteAt;
             futureJob.HangfireJobId = newHangfireJobId;
             futureJob.Status = FutureJobStatus.Scheduled;
+            futureJob.UpdatedAt = DateTime.UtcNow;
+            futureJob.CreatedAt = DateTime.UtcNow;
             
             await _futureJobRepository.UpdateAsync(futureJob);
             
