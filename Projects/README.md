@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (16, 2)
+## 🗃️ Directory (17, 1)
 1. ✅ [ActiveMQ](./ActiveMQ)
 2. ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3. ✅ [SignalR](./SignalR/)
@@ -20,8 +20,8 @@ Inside this subfolder are demonstrations of how things can work.
 14. ✅ [MicroFrontends](./MicroFrontends/) Comprehensive micro front end example.
 15. ✅ [ReactLibrary](./ReactLibrary) React component library - with storybook!
 16. ✅ [VirtualDOM](./VirtualDOM) Virtual DOM implementation (vero).
-17. [Scheduler](./Scheduler) Hangfire scheduler setup
-18. CRON job setup
+17. ✅ [Scheduler](./Scheduler) Hangfire scheduler setup
+18. [CRONJobSetup](./Scheduler) Hangfire scheduler setup/includes CRON job setup!
 
 ## ✨ Wishlist (4)
 - Publish and run docker image of simple server

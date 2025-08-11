@@ -3,12 +3,15 @@ using Scheduler.Application.Scheduling.Interfaces;
 using Scheduler.Contracts.Scheduling;
 using Scheduler.Core.Enums;
 using Scheduler.Domain.Entities;
+using Scheduler.Infrastructure.Scheduling.Logic;
 
 namespace Scheduler.Infrastructure.Scheduling.Services;
 
 public class SchedulerService(
     IFutureJobRepository _futureJobRepository,
+    IRecurringJobManager _recurringJobManager,
     IBackgroundJobClient _backgroundJobClient,
+    ICronLogic _cronLogic,
     IEnumerable<IFutureJobExecutor> _executors
 ) : ISchedulerService
 {
@@ -36,13 +39,7 @@ public class SchedulerService(
         }
 
         var hangfireJobId = _backgroundJobClient.Schedule(
-            () => executor.ExecuteAsync(new FutureJobDto
-            {
-                FutureJobId = savedJob.FutureJobId,
-                OrderId = savedJob.OrderId,
-                Type = savedJob.Type,
-                ExecuteAt = savedJob.ExecuteAt
-            }),
+            () => ExecuteFutureJobAsync(executor, savedJob),
             savedJob.ExecuteAt
         );
 
@@ -59,6 +56,52 @@ public class SchedulerService(
         return savedJob;
     }
 
+    public async Task<FutureJob> ScheduleRecurringJob(int orderId, FutureJobType type, string cronExpression = "0 0 * * *")
+    {
+        var executor = _executors.FirstOrDefault(e => e.Type == type);
+        if (executor == null)
+        {
+            throw new InvalidOperationException("No executor found for CRON job type");
+        }
+
+        var executeAt = _cronLogic.GetNextExectionDateTime(cronExpression);
+
+        if (!executeAt.HasValue)
+        {
+            throw new InvalidOperationException("Next execution could not be calculated from CRON expression");
+        }
+
+        // Create a FutureJobDto for the recurring execution
+        string hangfireJobId = $"recurring-{orderId}-{type}";
+        var scheduledTask = new FutureJob
+        {
+            OrderId = orderId,
+            Type = type,
+            ExecuteAt = executeAt!.Value,
+            Schedule = cronExpression,
+            HangfireJobId = hangfireJobId,
+            // Note: replace this use later with IDateTime
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            Status = FutureJobStatus.Pending
+        };
+
+        var savedJob = await _futureJobRepository.AddAsync(scheduledTask);
+
+        // Schedule the recurring job with Hangfire
+        _recurringJobManager.AddOrUpdate(
+            hangfireJobId,
+            () => ExecuteCronJobAsync(executor, savedJob),
+            cronExpression,
+            new RecurringJobOptions
+            {
+                TimeZone = TimeZoneInfo.Utc
+            }
+        );
+
+        return savedJob;
+    }
+
     public async Task CancelJobAsync(int jobId)
     {
         // Find task by Hangfire job ID
@@ -66,25 +109,18 @@ public class SchedulerService(
         if (futureJob == null) return;
 
         // Cancel in Hangfire
-        _backgroundJobClient.Delete(futureJob.HangfireJobId);
+        if (string.IsNullOrEmpty(futureJob.Schedule)) 
+        {
+            _backgroundJobClient.Delete(futureJob.HangfireJobId);
+        }
+        else
+        {
+            _recurringJobManager.RemoveIfExists(futureJob.HangfireJobId);
+        }
         
         // Update status in database
         futureJob.Status = FutureJobStatus.Cancelled;
         await _futureJobRepository.UpdateAsync(futureJob);
-    }
-
-    public async Task<bool> DeleteJobAsync(int jobId)
-    {
-        // Find task by Hangfire job ID
-        var futureJob = await _futureJobRepository.GetByIdAsync(jobId);
-        if (futureJob == null) return false;
-
-        // Delete from Hangfire
-        _backgroundJobClient.Delete(futureJob.HangfireJobId);
-        
-        // Delete from database
-        await _futureJobRepository.DeleteAsync(futureJob.FutureJobId);
-        return true;
     }
 
     public async Task<FutureJob> RescheduleJobAsync(int futureJobId, DateTime newExecuteAt)
@@ -147,4 +183,46 @@ public class SchedulerService(
             throw;
         }
     }
+
+    private async Task ExecuteFutureJobAsync(IFutureJobExecutor executor, FutureJobDto futureJob)
+    {
+        await executor.ExecuteAsync(futureJob);
+        // If successful, update status and next execution time.
+        var entity = await _futureJobRepository.GetByIdAsync(futureJob.FutureJobId);
+        if (entity == null) 
+        {
+            throw new InvalidOperationException($"FutureJob with ID {futureJob.FutureJobId} not found.");
+        }
+        entity.Status = FutureJobStatus.Completed;
+        entity.UpdatedAt = DateTime.UtcNow;
+        await _futureJobRepository.UpdateAsync(entity);
+    }
+
+    private async Task ExecuteCronJobAsync(IFutureJobExecutor executor, FutureJobDto futureJob)
+    {
+        await executor.ExecuteAsync(futureJob);
+        // If successful, update status and next execution time.
+        var entity = await _futureJobRepository.GetByIdAsync(futureJob.FutureJobId);
+        if (entity == null) 
+        {
+            throw new InvalidOperationException($"FutureJob with ID {futureJob.FutureJobId} not found.");
+        }
+        entity.Status = FutureJobStatus.Completed;
+        entity.UpdatedAt = DateTime.UtcNow;
+        var executeAt = _cronLogic.GetNextExectionDateTime(futureJob.Schedule, DateTimeOffset.UtcNow);
+        if (!executeAt.HasValue)
+        {
+            throw new InvalidOperationException("Next execution could not be calculated from CRON expression");
+        }
+        entity.ExecuteAt = executeAt!;
+        await _futureJobRepository.UpdateAsync(entity);
+    }
+
+    private FutureJobDto ToJobDto(FutureJob jb) => new()
+        {
+            FutureJobId = jb.FutureJobId,
+            OrderId = jb.OrderId,
+            Type = jb.Type,
+            ExecuteAt = jb.ExecuteAt
+        };
 }

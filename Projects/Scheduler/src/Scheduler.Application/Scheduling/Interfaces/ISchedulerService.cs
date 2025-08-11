@@ -9,6 +9,6 @@ namespace Scheduler.Application.Scheduling.Interfaces;
 public interface ISchedulerService
 {
     Task<FutureJob> ScheduleJobAsync(int orderId, FutureJobType jobType, DateTime executeAt);
+    Task<FutureJob> ScheduleRecurringJob(int orderId, FutureJobType type, string cronExpression = "0 0 * * *");
     Task CancelJobAsync(int futureJobId);
-    Task<FutureJob> RescheduleJobAsync(int futureJobId, DateTime newExecuteAt);
 }
