@@ -19,6 +19,8 @@ docker run --name dev-db \
   -d postgres:15
 ```
 
+If you need to clean up the persistent volume: `docker volume rm postgres-data`
+
 ### Database Migrations
 From the API project directory:
 ```bash
