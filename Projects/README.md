@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (✨18, 1)
+## 🗃️ Directory (✨18, 2)
 1.  ✅ [ActiveMQ](./ActiveMQ)
 2.  ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3.  ✅ [SignalR](./SignalR/)
@@ -23,6 +23,7 @@ Inside this subfolder are demonstrations of how things can work.
 17. ✅ [Scheduler](./Scheduler) Hangfire scheduler setup
 18. ✅ [CRONJobSetup](./Scheduler) Hangfire scheduler setup/includes CRON job setup!
 19. [FrontEndSyncEngine](./FrontEndSyncEngine) Demonstrates what a sync engine is and how to use it.
+20. [Scripts](./Scripts) Demonstrates some great scripting examples
 
 ## ✨ Wishlist (4)
 - Publish and run docker image of simple server
