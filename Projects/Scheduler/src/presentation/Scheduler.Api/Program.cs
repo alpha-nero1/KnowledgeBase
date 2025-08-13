@@ -3,7 +3,11 @@ using Scheduler.Application;
 using Scheduler.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddLogging(configure =>
+    {
+        configure.AddConsole(); 
+        configure.AddDebug();
+    });
 var services = builder.Services;
 var configuration = builder.Configuration;
 
@@ -22,11 +26,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseHangfireDashboard("/hangfire");
 }
-else
-{
-    app.UseHttpsRedirection();
-}
 
+app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();

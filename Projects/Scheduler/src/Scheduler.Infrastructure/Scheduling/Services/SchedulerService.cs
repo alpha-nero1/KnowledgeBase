@@ -1,4 +1,5 @@
 using Hangfire;
+using Microsoft.Extensions.Logging;
 using Scheduler.Application.Scheduling.Interfaces;
 using Scheduler.Contracts.Scheduling;
 using Scheduler.Core.Enums;
@@ -39,7 +40,7 @@ public class SchedulerService(
         }
 
         var hangfireJobId = _backgroundJobClient.Schedule(
-            () => ExecuteFutureJobAsync(executor, savedJob),
+            () => ExecuteFutureJobAsync(type, ToJobDto(savedJob)),
             savedJob.ExecuteAt
         );
 
@@ -91,7 +92,7 @@ public class SchedulerService(
         // Schedule the recurring job with Hangfire
         _recurringJobManager.AddOrUpdate(
             hangfireJobId,
-            () => ExecuteCronJobAsync(executor, savedJob),
+            () => ExecuteCronJobAsync(type, ToJobDto(savedJob)),
             cronExpression,
             new RecurringJobOptions
             {
@@ -106,7 +107,10 @@ public class SchedulerService(
     {
         // Find task by Hangfire job ID
         var futureJob = await _futureJobRepository.GetByIdAsync(jobId);
-        if (futureJob == null) return;
+        if (futureJob == null) 
+        {
+            throw new InvalidOperationException($"Could not find job {jobId} to cancel.");
+        }
 
         // Cancel in Hangfire
         if (string.IsNullOrEmpty(futureJob.Schedule)) 
@@ -184,8 +188,21 @@ public class SchedulerService(
         }
     }
 
-    private async Task ExecuteFutureJobAsync(IFutureJobExecutor executor, FutureJobDto futureJob)
+    /// <summary>
+    /// Wrapper for executing a simple future job.
+    ///  
+    /// Note: must be public so that hangfire can find it.
+    /// </summary>
+    public async Task ExecuteFutureJobAsync(FutureJobType type, FutureJobDto futureJob)
     {
+        // Watch out for this HUGE trap in hangfire. Do NOT pass in the executor directly to the function which hangfire
+        // will execute. Said service will be out of the dependency injection scope that hangfire creates.
+        // Anything DI must be discovered INSIDE your execution, not passed into it. Thank you goodbye.
+        var executor = _executors.FirstOrDefault(e => e.Type == type);
+        if (executor == null)
+        {
+            throw new InvalidOperationException($"No executor found for job type: {type}, orderId: {futureJob.OrderId}");
+        }
         await executor.ExecuteAsync(futureJob);
         // If successful, update status and next execution time.
         var entity = await _futureJobRepository.GetByIdAsync(futureJob.FutureJobId);
@@ -198,27 +215,40 @@ public class SchedulerService(
         await _futureJobRepository.UpdateAsync(entity);
     }
 
-    private async Task ExecuteCronJobAsync(IFutureJobExecutor executor, FutureJobDto futureJob)
+    /// <summary>
+    /// Wrapper for executing a CRON scheduled job.
+    ///  
+    /// Note: must be public so that hangfire can find it.
+    /// </summary>
+    public async Task ExecuteCronJobAsync(FutureJobType type, FutureJobDto futureJob)
     {
+        // Watch out for this HUGE trap in hangfire. Do NOT pass in the executor directly to the function which hangfire
+        // will execute. Said service will be out of the dependency injection scope that hangfire creates.
+        // Anything DI must be discovered INSIDE your execution, not passed into it. Thank you goodbye.
+        var executor = _executors.FirstOrDefault(e => e.Type == type);
+        if (executor == null)
+        {
+            throw new InvalidOperationException($"No executor found for job type: {type}, orderId: {futureJob.OrderId}");
+        }
         await executor.ExecuteAsync(futureJob);
         // If successful, update status and next execution time.
         var entity = await _futureJobRepository.GetByIdAsync(futureJob.FutureJobId);
-        if (entity == null) 
+        if (entity is null) 
         {
             throw new InvalidOperationException($"FutureJob with ID {futureJob.FutureJobId} not found.");
         }
         entity.Status = FutureJobStatus.Completed;
         entity.UpdatedAt = DateTime.UtcNow;
-        var executeAt = _cronLogic.GetNextExectionDateTime(futureJob.Schedule, DateTimeOffset.UtcNow);
+        var executeAt = _cronLogic.GetNextExectionDateTime(entity.Schedule, DateTimeOffset.UtcNow);
         if (!executeAt.HasValue)
         {
             throw new InvalidOperationException("Next execution could not be calculated from CRON expression");
         }
-        entity.ExecuteAt = executeAt!;
+        entity.ExecuteAt = executeAt.Value;
         await _futureJobRepository.UpdateAsync(entity);
     }
 
-    private FutureJobDto ToJobDto(FutureJob jb) => new()
+    private static FutureJobDto ToJobDto(FutureJob jb) => new()
         {
             FutureJobId = jb.FutureJobId,
             OrderId = jb.OrderId,

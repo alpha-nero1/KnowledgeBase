@@ -45,7 +45,9 @@
         "streambuf": "cpp",
         "typeinfo": "cpp"
     },
-    "github.copilot.enable": false,  // Completely disable Copilot
+    "github.copilot.enable": {
+        "*": false
+    },  // Completely disable Copilot
     "github.copilot.editor.enableAutoCompletions": false,  // Keep enabled but turn off auto-suggestions
     "github.copilot.editor.enableCodeActions": false  // Turn off code action suggestions
 }

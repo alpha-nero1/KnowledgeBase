@@ -7,6 +7,7 @@ using Scheduler.Infrastructure.Persistence;
 using Scheduler.Infrastructure.Scheduling.Services;
 using Scheduler.Infrastructure.Scheduling.Repositories;
 using Scheduler.Application.Scheduling.Interfaces;
+using Scheduler.Infrastructure.Scheduling.Logic;
 
 namespace Scheduler.Infrastructure;
 
@@ -25,12 +26,12 @@ public static class InfrastructureDependencyInjection
             options.UseNpgsql(connectionString));
 
         // Configure Hangfire with PostgreSQL storage (shared between API and Worker)
-        services.AddHangfire(config => 
+        services.AddHangfire((config) => 
         {
             config.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
-                  .UseSimpleAssemblyNameTypeSerializer()
-                  .UseRecommendedSerializerSettings()
-                  .UsePostgreSqlStorage(c => c.UseNpgsqlConnection(connectionString));
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UsePostgreSqlStorage(c => c.UseNpgsqlConnection(connectionString));
         });
 
         // Only add hangfire server if not in API mode!
@@ -45,6 +46,7 @@ public static class InfrastructureDependencyInjection
 
         services.AddScoped<IFutureJobRepository, FutureJobRepository>();
         services.AddScoped<ISchedulerService, SchedulerService>();
+        services.AddScoped<ICronLogic, CronLogic>();
 
         return services;
     }
