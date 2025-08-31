@@ -223,13 +223,6 @@ const compareCodeBreakdowns = async (paths, options = {}) => {
     return results;
 };
 
-module.exports = {
-    codeBreakdown,
-    printCodeBreakdown,
-    compareCodeBreakdowns,
-    enhanceJsonOutput
-};
-
 // Example usage (uncomment to test):
 /*
 (async () => {

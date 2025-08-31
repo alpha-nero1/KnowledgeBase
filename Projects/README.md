@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (✨18, 2)
+## 🗃️ Directory (✨19, 1)
 1.  ✅ [ActiveMQ](./ActiveMQ)
 2.  ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3.  ✅ [SignalR](./SignalR/)
@@ -22,11 +22,12 @@ Inside this subfolder are demonstrations of how things can work.
 16. ✅ [VirtualDOM](./VirtualDOM) Virtual DOM implementation (vero).
 17. ✅ [Scheduler](./Scheduler) Hangfire scheduler setup
 18. ✅ [CRONJobSetup](./Scheduler) Hangfire scheduler setup/includes CRON job setup!
-19. [FrontEndSyncEngine](./FrontEndSyncEngine) Demonstrates what a sync engine is and how to use it.
-20. [Scripts](./Scripts) Demonstrates some great scripting examples
+19. ✅ [Scripts](./Scripts) Demonstrates some great scripting examples
+20. [FrontEndSyncEngine](./FrontEndSyncEngine) Demonstrates what a sync engine is and how to use it.
 
 ## ✨ Wishlist (4)
 - Publish and run docker image of simple server
 - Document service; word & pdf prefill + generation + storage + proper CLEAN architecture
 - Containerise a Pub/Sub applications and deploy them to AWS (set up easy deployment pipelines)
 - Vectorising information into a custom LLM model.
+- MPC server or something?
