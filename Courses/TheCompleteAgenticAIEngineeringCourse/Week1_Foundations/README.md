@@ -15,3 +15,7 @@ How MCP tools actually work lol, it's smoke and mirrors!
 ![alt text](image-1.png)
 
 JSON and if statements baby!
+
+
+# Huggingface
+Can use huggingface to easily deploy your gradio model.
