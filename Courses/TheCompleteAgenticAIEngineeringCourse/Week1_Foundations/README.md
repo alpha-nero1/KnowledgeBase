@@ -19,3 +19,7 @@ JSON and if statements baby!
 
 # Huggingface
 Can use huggingface to easily deploy your gradio model.
+
+
+## 1.5.
+Facilitates creating an agent reasoning loop, pretty cool!
