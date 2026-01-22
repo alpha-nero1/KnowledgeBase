@@ -1,3 +1,8 @@
+"""
+    Defines a single agent for actually searching the web using
+    openais standard WebSearchTool tool.
+"""
+
 from agents import Agent, WebSearchTool, ModelSettings
 
 INSTRUCTIONS = (

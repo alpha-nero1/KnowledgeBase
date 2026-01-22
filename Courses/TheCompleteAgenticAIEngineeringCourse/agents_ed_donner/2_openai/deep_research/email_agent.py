@@ -1,3 +1,7 @@
+"""
+    Defines a single agent for writing and sending the email report.
+"""
+
 import os
 from typing import Dict
 

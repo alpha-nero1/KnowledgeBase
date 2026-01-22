@@ -1,3 +1,7 @@
+"""
+    Defines a single agent that amalgamates all our searches into one report.
+"""
+
 from pydantic import BaseModel, Field
 from agents import Agent
 
@@ -9,7 +13,6 @@ INSTRUCTIONS = (
     "The final output should be in markdown format, and it should be lengthy and detailed. Aim "
     "for 5-10 pages of content, at least 1000 words."
 )
-
 
 class ReportData(BaseModel):
     short_summary: str = Field(description="A short 2-3 sentence summary of the findings.")

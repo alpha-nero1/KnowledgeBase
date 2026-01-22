@@ -1,3 +1,7 @@
+"""
+    Defines a single agent for planning the web search to be done.
+"""
+
 from pydantic import BaseModel, Field
 from agents import Agent
 

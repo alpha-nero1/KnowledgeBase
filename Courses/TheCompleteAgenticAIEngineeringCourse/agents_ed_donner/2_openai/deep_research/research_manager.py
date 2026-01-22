@@ -12,6 +12,7 @@ class ResearchManager:
         trace_id = gen_trace_id()
         with trace("Research trace", trace_id=trace_id):
             print(f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}")
+            # Yield pushes this update back to the chat.
             yield f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}"
             print("Starting research...")
             search_plan = await self.plan_searches(query)
@@ -19,9 +20,10 @@ class ResearchManager:
             search_results = await self.perform_searches(search_plan)
             yield "Searches complete, writing report..."
             report = await self.write_report(query, search_results)
-            yield "Report written, sending email..."
-            await self.send_email(report)
-            yield "Email sent, research complete"
+            # Ignore the email - I do not have it set up.
+            # yield "Report written, sending email..."
+            # await self.send_email(report)
+            yield "Research complete"
             yield report.markdown_report
         
 
