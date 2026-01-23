@@ -30,5 +30,6 @@ analysis_task:
     with an executive summary, main sections, and conclusion.
   agent: analyst
   context:
+    # Provide task name as context so that it's output can feed into this task!
     - research_task
   output_file: output/report.md

@@ -1,55 +1,35 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-
+from crewai.agents.agent_builder.base_agent import BaseAgent
+from typing import List
 
 @CrewBase
 class Debate():
     """Debate crew"""
 
-
-    agents_config = 'config/agents.yaml'
-    tasks_config = 'config/tasks.yaml'
-
-    @agent
-    def debater(self) -> Agent:
-        return Agent(
-            config=self.agents_config['debater'],
-            verbose=True
-        )
+    agents: List[BaseAgent]
+    tasks: List[Task]
 
     @agent
-    def judge(self) -> Agent:
-        return Agent(
-            config=self.agents_config['judge'],
-            verbose=True
-        )
+    def debater(self) -> Agent: return Agent(config=self.agents_config['debater'], verbose=True)
+
+    @agent
+    def judge(self) -> Agent: return Agent(config=self.agents_config['judge'], verbose=True)
 
     @task
-    def propose(self) -> Task:
-        return Task(
-            config=self.tasks_config['propose'],
-        )
+    def propose(self) -> Task: return Task(config=self.tasks_config['propose'])
 
     @task
-    def oppose(self) -> Task:
-        return Task(
-            config=self.tasks_config['oppose'],
-        )
+    def oppose(self) -> Task: return Task(config=self.tasks_config['oppose'])
 
     @task
-    def decide(self) -> Task:
-        return Task(
-            config=self.tasks_config['decide'],
-        )
-
+    def decide(self) -> Task: return Task(config=self.tasks_config['decide'])
 
     @crew
-    def crew(self) -> Crew:
-        """Creates the Debate crew"""
-
-        return Crew(
-            agents=self.agents, # Automatically created by the @agent decorator
-            tasks=self.tasks, # Automatically created by the @task decorator
-            process=Process.sequential,
-            verbose=True,
-        )
+    def crew(self) -> Crew: return Crew(
+        agents=self.agents,
+        tasks=self.tasks,
+        # Here we decide wether the process should be sequential OR heirarchical
+        process=Process.sequential,
+        verbose=True,
+    )

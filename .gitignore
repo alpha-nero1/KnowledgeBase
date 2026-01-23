@@ -9,6 +9,8 @@ appsettings.Development.json
 .venv
 *.sqlite3
 **.hf_cache
+**.env
+**.bin
 
 # CMake
 CMakeLists.txt.user

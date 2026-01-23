@@ -12,7 +12,7 @@ Week 2
 2/deep_research - Python modules project implementation of the deep research program displaying via gradio UI.
 
 Week 3
-3.1 - 
+3.1 - using crew to set up a team of agents to simulate a debate about a topic - very cool.
 
 
 ## Notes
