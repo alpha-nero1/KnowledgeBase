@@ -107,19 +107,42 @@ def handle_tool_calls(tool_calls):
     return results
 
 
-def loop(messages):
+def loop(messages, stream_callback=None):
+    """Run the reasoning loop with optional streaming callback.
+    
+    Args:
+        messages: Chat message history
+        stream_callback: Optional generator callback that yields updates
+    """
     done = False
+    step = 0
     while not done:
+        step += 1
+        if stream_callback:
+            yield f"🤔 Step {step}: Thinking...\n"
+        
         response = openai.chat.completions.create(model="gpt-5.2", messages=messages, tools=tools, reasoning_effort="none")
         finish_reason = response.choices[0].finish_reason
+        
         if finish_reason=="tool_calls":
             message = response.choices[0].message
             tool_calls = message.tool_calls
+            
+            if stream_callback:
+                for tc in tool_calls:
+                    args = json.loads(tc.function.arguments)
+                    yield f"🔧 Calling {tc.function.name} with: {args}\n"
+            
             results = handle_tool_calls(tool_calls)
+            
+            if stream_callback:
+                yield f"\n{get_todo_report()}\n"
+            
             messages.append(message)
             messages.extend(results)
         else:
             done = True
+    
     result = response.choices[0].message.content
     show(result)
     return result

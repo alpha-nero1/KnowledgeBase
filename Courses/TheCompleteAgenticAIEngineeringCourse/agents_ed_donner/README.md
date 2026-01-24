@@ -5,15 +5,18 @@ Week 1
 1.4 - Building chat bot that responds to CV questions.
 1.5 - Building the AI reasoning loop.
 
-Week 2
+Week 2 (All about openai agents sdk)
 2.2 - simple function tools (just use decorator), Calling agents as tools (.as_tool func), using Handoffs
 2.3 - Models other than openai, structured outputs & guardrails.
 2.4 - Deep research model for models that search the internet using openai hosted tools like `WebSearchTool`
 2/deep_research - Python modules project implementation of the deep research program displaying via gradio UI.
 
-Week 3
+Week 3 (All about CrewAi)
 3.1 - using crew to set up a team of agents to simulate a debate about a topic - very cool.
-
+3.2 - using crew to do financial research on a company including Serper tool use to search google
+3.3 - stock_picker; actually using a heirarchical strategy (manager agent) to assign the right task to the right agents, included custom tool definition and use.
+3.4. - stock picker making use of memory (long & short term!)
+3.5. - Coder agent - generate python and execute that python to continue the flow, pretty simple crew config and just produces an output file.
 
 ## Notes
 2026-01-23

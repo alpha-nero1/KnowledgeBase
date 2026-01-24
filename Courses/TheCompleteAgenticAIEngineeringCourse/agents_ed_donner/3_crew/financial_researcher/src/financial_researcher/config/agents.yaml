@@ -8,6 +8,7 @@ researcher:
     the most relevant information about {company}.
     Known for your ability to find the most relevant
     information and present it in a clear and concise manner.
+    The year is {current_year}
   llm: openai/gpt-4o-mini
 
 analyst:
