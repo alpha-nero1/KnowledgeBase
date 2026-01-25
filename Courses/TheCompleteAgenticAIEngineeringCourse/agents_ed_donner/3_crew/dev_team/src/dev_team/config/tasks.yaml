@@ -1,0 +1,78 @@
+design_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the engineer;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {requirements}
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+  expected_output: >
+    A detailed design for the engineer, identifying the classes and functions in the module.
+  agent: dev_lead
+  # This is how we can get the module creation to occur using variables!
+  output_file: output/{module_name}_design.md
+
+clarification_request_task:
+  description: >
+    Review the design provided by the engineering lead and identify any ambiguities, unclear requirements, or implementation concerns.
+    Ask specific clarifying questions about the design to ensure you understand all the details before implementation.
+    List each question clearly.
+  expected_output: >
+    A detailed list of clarifying questions about the design.
+  agent: backend_dev
+  context:
+    - design_task
+  output_file: output/clarification_questions.md
+
+clarification_response_task:
+  description: >
+    Review the clarifying questions asked by the backend engineer about your design.
+    Provide clear, detailed answers to each question to help them understand the requirements and design decisions.
+  expected_output: >
+    Clear and detailed responses to all the backend engineer's clarifying questions.
+  agent: dev_lead
+  context:
+    - clarification_request_task
+  output_file: output/clarification_answers.md
+
+backend_task:
+  description: >
+    Write a python module that implements the design described by the engineering lead, in order to achieve the requirements.
+    Here are the requirements: {requirements}
+    Use the clarifications and answers provided to guide your implementation.
+  expected_output: >
+    A python module that implements the design and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: backend_dev
+  # Design task flows into this task.
+  context:
+    - design_task
+    - clarification_response_task
+  output_file: output/{module_name}
+
+frontend_task:
+  description: >
+    Write a gradio UI in a module app.py that demonstrates the given backend class in {module_name}.
+    Assume there is only 1 user, and keep the UI very simple indeed - just a prototype or demo.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A gradio UI in module app.py that demonstrates the given backend class.
+    The file should be ready so that it can be run as-is, in the same directory as the backend module, and it should import the backend class from {module_name}.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: frontend_dev
+  # Code task flows into this task.
+  context:
+    - backend_task
+  output_file: output/app.py
+
+test_task:
+  description: >
+    Write unit tests for the given backend module {module_name} and create a test_{module_name} in the same directory as the backend module.
+  expected_output: >
+    A test_{module_name} module that tests the given backend module.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: test_dev
+  context:
+    - backend_task
+  output_file: output/test_{module_name}

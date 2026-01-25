@@ -17,6 +17,11 @@ Week 3 (All about CrewAi)
 3.3 - stock_picker; actually using a heirarchical strategy (manager agent) to assign the right task to the right agents, included custom tool definition and use.
 3.4. - stock picker making use of memory (long & short term!)
 3.5. - Coder agent - generate python and execute that python to continue the flow, pretty simple crew config and just produces an output file.
+3.6. - Organise an AI engineering team to create a working program! - Tasks can return callbacks to create new tasks, this is how we can recursievly call tasks
+    - Also can use crew guardrails to make checks along the task chain
+
+Week 4 (LangGraph)
+4.1
 
 ## Notes
 2026-01-23
