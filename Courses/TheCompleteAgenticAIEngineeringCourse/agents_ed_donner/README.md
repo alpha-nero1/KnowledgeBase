@@ -29,6 +29,17 @@ Created deep_research project, very cool, asks for clarifying questions, great t
 
 Introduces Crew AI - you should use CrewAI when you need autonomous problem solving, creative collaboration or exploratory tasks.
 
+
+### LangGraph Core Concepts
+Agent workflows are represented as graphs (dependency chain sort of thing).
+State - Represents the status of the entire application.
+Nodes - a function represents an agentic logic, they receive the current state as input, do something and return updated state.
+Edges - a python func that determines which node to be executed next based on the state.
+Essentially, nodes do the work and edges choose what to do next.
+
+LangGraph is more of a state flow manager using python functions, it does not necessarily have anything to do with AI
+even though AI is a common use case.
+
 ### CrewAI Core Concepts
 Agent - smallest autonomous unit of work, has a role, goal and a backstory lol - has memory and tools > little ai
 Task - specific assignment to be carried out, with description, expected output and an agent attached to it.
