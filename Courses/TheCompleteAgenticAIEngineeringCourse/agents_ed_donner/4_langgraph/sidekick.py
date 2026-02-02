@@ -45,6 +45,9 @@ class Sidekick:
         self.browser = None
         self.playwright = None
 
+    """
+        Coroutine to init with async actions
+    """
     async def setup(self):
         self.tools, self.browser, self.playwright = await playwright_tools()
         self.tools += await other_tools()

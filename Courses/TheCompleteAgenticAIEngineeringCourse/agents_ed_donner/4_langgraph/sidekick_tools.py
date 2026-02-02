@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import requests
 from langchain.agents import Tool
+
 from langchain_community.agent_toolkits import FileManagementToolkit
 from langchain_community.tools.wikipedia.tool import WikipediaQueryRun
 from langchain_experimental.tools import PythonREPLTool
@@ -40,7 +41,7 @@ async def other_tools():
     push_tool = Tool(name="send_push_notification", func=push, description="Use this tool when you want to send a push notification")
     file_tools = get_file_tools()
 
-    tool_search =Tool(
+    tool_search = Tool(
         name="search",
         func=serper.run,
         description="Use this tool when you want to get the results of an online web search"
@@ -49,7 +50,9 @@ async def other_tools():
     wikipedia = WikipediaAPIWrapper()
     wiki_tool = WikipediaQueryRun(api_wrapper=wikipedia)
 
+    # Allow running of python code!
+    # This is not sandboxed, be careful!
     python_repl = PythonREPLTool()
     
-    return file_tools + [push_tool, tool_search, python_repl,  wiki_tool]
+    return file_tools + [push_tool, tool_search,  wiki_tool]
 
