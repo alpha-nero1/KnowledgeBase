@@ -8,6 +8,15 @@ import asyncio
 
 HOW_MANY_AGENTS = 20
 
+"""
+    This program works by creating python scripts BASED OFF the agent.py scaffolding we created.
+
+    Then the creator can IMPORT those agents and invoke them!!!!
+
+    The machines have taken over!
+"""
+
+
 async def create_and_message(worker, creator_id, i: int):
     try:
         result = await worker.send_message(messages.Message(content=f"agent{i}.py"), creator_id)

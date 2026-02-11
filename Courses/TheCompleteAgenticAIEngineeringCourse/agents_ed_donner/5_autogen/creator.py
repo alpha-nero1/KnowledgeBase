@@ -16,6 +16,9 @@ logger = logging.getLogger(TRACE_LOGGER_NAME)
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.DEBUG)
 
+"""
+    Spawns agents!
+"""
 
 class Creator(RoutedAgent):
 

@@ -21,13 +21,36 @@ Week 3 (All about CrewAi)
     - Also can use crew guardrails to make checks along the task chain
 
 Week 4 (LangGraph)
-4.1
+4.1. - Demonstrates basic use of langgraph with no AI involved.
+4.2. - LangGraph and LangChain used together with memory.
+4.3. - Arm an agent with playwright to use headless or headfull web search.
+4.4. - Create a personal assistant with a plethora of tools.
 
-## Notes
-2026-01-23
-Created deep_research project, very cool, asks for clarifying questions, great that gradle can facilitate html. perhaps there is a POC in that for facilitating agent chat.
 
-Introduces Crew AI - you should use CrewAI when you need autonomous problem solving, creative collaboration or exploratory tasks.
+Week 5 (Autogen)
+5.1 - Simple agent chat with AutoGen AgentChat
+5.2 - Using structured outputs with AutoGen AgentChat and adapting tools from langchain to use in AgentChat.
+5.3 - How to use AutoGen core and demonstrating its agent and agentchat agnostic use.
+5.4 - Create a playpen of distributed agents and interact with eachother from all over the globe and no matter what language they are written in.
+5.5 - Agent creator - agents create other agents 
+
+Week 6 (MCP)
+6.1 - Particulars of MCP
+
+
+### MCP
+- `SSE connection` type is over https and uses streaming for responses. it is necessary when the MCP server you are connecting to is remote.
+- `Stdio` is very common and is simple input and output, if the MCP server is local, this is prefered.
+
+### Autogen Core Concepts
+0.4 is a from the ground rewrite of 0.2 focused on agent visibility.
+
+What is autogen core? an agent interaction framework agnostic of platforms or products. Similar to langgraph
+where langraph can be used without langchain but often used together.
+
+- Runtime agent: handles lifecycle and communication across process boundaries, consisting of:
+    - Host service: connected to worker runtimes, handling message delivery and sessions for direct messages.
+    - Worker runtime: advertises agents to host service and handles executing their code. 
 
 
 ### LangGraph Core Concepts
@@ -48,6 +71,12 @@ Crew - aggregate of Agents & Tasks; can operate either in sequential mode or her
 > Uses a yaml configuration! You create an agent based on a predefined config.
 > Crewai projects cannot be done in notebooks because each crew setup is a whole uv project. `crewai create crew my_crew`
 
+
+## Notes
+2026-01-23
+Created deep_research project, very cool, asks for clarifying questions, great that gradle can facilitate html. perhaps there is a POC in that for facilitating agent chat.
+
+Introduces Crew AI - you should use CrewAI when you need autonomous problem solving, creative collaboration or exploratory tasks.
 
 2026-01-22
 Handoffs differ from tools in that they hand off the entire job to another AI if it realises another AI is better equipped for the job.

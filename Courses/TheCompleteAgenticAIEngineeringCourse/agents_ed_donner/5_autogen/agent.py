@@ -8,6 +8,12 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
+"""
+
+    This file represents a prototype that an agent will create sub version of.
+
+"""
+
 class Agent(RoutedAgent):
 
     # Change this system message to reflect the unique characteristics of this agent
@@ -38,6 +44,7 @@ class Agent(RoutedAgent):
         response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
         idea = response.chat_message.content
         if random.random() < self.CHANCES_THAT_I_BOUNCE_IDEA_OFF_ANOTHER:
+            # Recipient is the invoking model.
             recipient = messages.find_recipient()
             message = f"Here is my business idea. It may not be your speciality, but please refine it and make it better. {idea}"
             response = await self.send_message(messages.Message(content=message), recipient)
