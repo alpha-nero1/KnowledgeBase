@@ -1,5 +1,19 @@
 # Master AI Agentic Engineering -  build autonomous AI Agents
 
+## To Start
+`uv venv`
+`uv pip install -r requirements.txt`
+`uv sync` to install based off the uv.lock - this one saved me!
+
+## FAQs
+1. What is the difference between a Sequential and Heirarchical agentic workflow?
+- Sequential AI - simple assembly line A -> B -> C -> D
+    - Issue: if a problem happens along the chain there is no loop back to fix it and the workflow goes down the toilet.
+    - Can fix by introducing a validator and loop backs.
+    - Still need to hardcode a fixed path.
+- Heirarchical - There is one manager agent that is orchestrating and deciding what agents or tools need to be called to get the job done.
+    - Agent decides the paths needed to take.
+
 ## Lesson Summaries
 Week 1
 1.4 - Building chat bot that responds to CV questions.
@@ -90,8 +104,3 @@ Do we have access to view traces if we are just using th chat gpt agent but inte
 2026-01-21
 Bit confusing the difference between 2.2 & 2.3 was not super clear.
 Once the lesson is done, rename it with a more descriptive name.
-
-## To Start
-`uv venv`
-`uv pip install -r requirements.txt`
-`uv sync` to install based off the uv.lock - this one saved me!
