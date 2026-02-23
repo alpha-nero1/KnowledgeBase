@@ -35,12 +35,16 @@ Week 5 (Autogen)
 5.5 - Agent creator - agents create other agents 
 
 Week 6 (MCP)
-6.1 - Particulars of MCP
-
+6.1 - Particulars of MCP, building an agent using easy local MCP servers. mcp discopgraphy: https://mcp.so/ and https://glama.ai
+6.2. - Build your own MCP server, als
+6.3. - Equip MCP servers with memory, MCP server calling the internet, remote MCP servers.
 
 ### MCP
 - `SSE connection` type is over https and uses streaming for responses. it is necessary when the MCP server you are connecting to is remote.
 - `Stdio` is very common and is simple input and output, if the MCP server is local, this is prefered.
+- MCP client is now build in to openai agents sdk, this was not native before and you had to do it yourself.
+
+MCP client is the actual mechanism connecting the agent to the MCP server.
 
 ### Autogen Core Concepts
 0.4 is a from the ground rewrite of 0.2 focused on agent visibility.

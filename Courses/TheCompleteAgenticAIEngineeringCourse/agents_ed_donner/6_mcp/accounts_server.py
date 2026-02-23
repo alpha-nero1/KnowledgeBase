@@ -1,6 +1,8 @@
 from mcp.server.fastmcp import FastMCP
 from accounts import Account
 
+# Fast MCP from anthropic!
+# We give information to the server via the doc strings in this file.
 mcp = FastMCP("accounts_server")
 
 @mcp.tool()
@@ -56,6 +58,7 @@ async def change_strategy(name: str, strategy: str) -> str:
     """
     return Account.get(name).change_strategy(strategy)
 
+# Resources!
 @mcp.resource("accounts://accounts_server/{name}")
 async def read_account_resource(name: str) -> str:
     account = Account.get(name.lower())
