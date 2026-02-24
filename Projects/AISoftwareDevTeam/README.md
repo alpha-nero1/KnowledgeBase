@@ -9,3 +9,9 @@ In this project we set up a development team with a:
 4. Tester
 
 The software development team takes a prompt and works out the solution, executing code and debugging untill workable software is produced. This essentially simulates copilot.
+
+## How to run
+`uv venv`
+`uv pip install -r requirements.txt`
+`uv sync` to install based off the uv.lock - this one saved me!
+`uv run python main.py`

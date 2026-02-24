@@ -1,10 +1,13 @@
 from agents import Agent, Runner
 
+
 def get_agent_instruction(role, goal, backstory, date):
     return f"You are a {role}, your goal is to {goal}. {backstory}. The current date is {date}"
 
+
 def get_agent_name(role):
     return f'{role} Agent'
+
 
 def get_tool_description(role, goal, backstory):
     return f"A tool for {goal}, calls a {get_agent_name(role)} who {backstory}"

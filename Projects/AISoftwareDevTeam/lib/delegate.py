@@ -1,5 +1,4 @@
-from agents import Agent, Runner
-from worker import Worker
+from .worker import Worker
 
 def create_instruction(role, goal, backstory, date):
     return f"You are a {role}, your goal is to {goal}. {backstory}. The current date is {date}"
@@ -9,7 +8,7 @@ def workers_as_tools(workers):
         return []
     return [worker.expose_as_tool() for worker in workers]
 
-class Leader(Worker):
+class Delegate(Worker):
     def __init__(
         self, 
         role, 
@@ -19,7 +18,7 @@ class Leader(Worker):
         model = 'gpt-4o-mini', 
         workers = []
     ): 
-        super(role, goal, backstory, date, model, workers_as_tools(workers))
+        super().__init__(role, goal, backstory, date, model, workers_as_tools(workers))
 
     def __str__(self):
-        return f'{{"role": {self.__role}, "type": "Leader", "goal": {self.__goal}, "backstory": {self.__backstory}}}'
+        return f'{{"role": {self.__role}, "type": "Delegate", "goal": {self.__goal}, "backstory": {self.__backstory}}}'
