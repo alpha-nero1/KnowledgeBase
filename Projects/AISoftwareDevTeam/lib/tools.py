@@ -14,9 +14,33 @@ WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_ROOT = WORKSPACE_ROOT / "output"
 
 def _resolve_path(path: str) -> Path:
-    resolved = (OUTPUT_ROOT / path).resolve()
+    raw_path = (path or "").strip()
+    if not raw_path:
+        raise ValueError("Path is required")
+
+    normalized = raw_path.replace("\\", "/")
+    if normalized.startswith("./"):
+        normalized = normalized[2:]
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    if normalized == "output":
+        normalized = ""
+    elif normalized.startswith("/output/"):
+        normalized = normalized[len("/output/") :]
+
+    while normalized.startswith("output/"):
+        normalized = normalized[len("output/") :]
+
+    candidate = Path(normalized)
+    if candidate.is_absolute():
+        resolved = candidate.resolve()
+    else:
+        resolved = (OUTPUT_ROOT / candidate).resolve()
+
     if not resolved.is_relative_to(OUTPUT_ROOT):
-        raise ValueError("Path must be within the output folder")
+        raise ValueError(
+            "Path must be within the output folder. Use a relative path like 'mortgage.py' or 'apps/mortgage.py'."
+        )
     return resolved
 
 

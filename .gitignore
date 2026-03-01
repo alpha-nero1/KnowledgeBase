@@ -4,6 +4,7 @@ appsettings.Development.json
 **.DS_Store
 **.__mf__temp
 **.db**
+Projects/AISoftwareDevTeam/output/
 
 # Python
 .venv

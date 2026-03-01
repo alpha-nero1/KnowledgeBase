@@ -1,7 +1,7 @@
 from agents import TracingProcessor, Trace, Span
 import secrets
 import string
-from datastore import write_log
+from .datastore import write_log
 
 ALPHANUM = string.ascii_lowercase + string.digits 
 
@@ -38,7 +38,7 @@ class LogTracer(TracingProcessor):
 
     def on_span_start(self, span) -> None:
         name = self.get_name(span)
-        type = span.span_data.type if span.span_data else "span"
+        span_type = span.span_data.type if span.span_data else "span"
         if name:
             message = "Started"
             if span.span_data:
@@ -50,11 +50,11 @@ class LogTracer(TracingProcessor):
                     message += f" {span.span_data.server}"
             if span.error:
                 message += f" {span.error}"
-            write_log(name, type, message)
+            write_log(name, span_type, message)
 
     def on_span_end(self, span) -> None:
         name = self.get_name(span)
-        type = span.span_data.type if span.span_data else "span"
+        span_type = span.span_data.type if span.span_data else "span"
         if name:
             message = "Ended"
             if span.span_data:
@@ -67,7 +67,7 @@ class LogTracer(TracingProcessor):
                     message += f" {span.span_data.server}"
             if span.error:
                 message += f" {span.error}"
-            write_log(name, type, message)
+            write_log(name, span_type, message)
 
     def force_flush(self) -> None:
         pass

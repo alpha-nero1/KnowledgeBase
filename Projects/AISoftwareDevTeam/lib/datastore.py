@@ -22,13 +22,14 @@ def migrate():
 """
     Write a log to the DB.
 """
-def write_log(name: str, type: str, message: str):
+def write_log(name: str, log_type: str, message: str):
+    print(f'writing log - {name} - {log_type} - {message}', flush=True)
     with sqlite3.connect(DB_CONNECTION) as conn:
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO logs (name, datetime, type, message)
             VALUES (?, datetime('now'), ?, ?)
-        ''', (name.lower(), type, message))
+        ''', (name.lower(), log_type, message))
         conn.commit()
 
 """
@@ -44,7 +45,7 @@ def read_log(name: str, last_n=10):
             LIMIT ?
         ''', (name.lower(), last_n))
         
-        return reversed(cursor.fetchall())
+        return cursor.fetchall()
 
 """
     Read the most recent logs across all agents.
@@ -58,4 +59,4 @@ def read_logs(last_n=200):
             LIMIT ?
         ''', (last_n,))
 
-        return reversed(cursor.fetchall())
+        return cursor.fetchall()

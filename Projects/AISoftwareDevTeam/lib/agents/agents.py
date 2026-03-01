@@ -1,6 +1,6 @@
 from .worker import Worker
 from .delegate import Delegate
-from .tools import developer_tools, tester_tools
+from ..tools import developer_tools, tester_tools
 
 """
     Develops the front end.

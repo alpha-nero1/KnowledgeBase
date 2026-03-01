@@ -1,4 +1,0 @@
-dotenv==0.9.9
-gradio==4.44.1
-python-dotenv==1.2.1
-openai-agents
