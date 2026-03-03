@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:first_app/gradient_container.dart';
 
 // Main is picked up as the app entrypoint.
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
         // backgroundColor: Colors.deepPurple,
-        body: Container(
-          decoration: BoxDecoration(gradient: LinearGradient()),
-          child: const Center(child: Text('Hello World!'))
-        )),
+        body: GradientContainer(Colors.deepPurple, Colors.lightBlue)
+      ),
     ),
   );
 }
+
