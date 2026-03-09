@@ -1,3 +1,4 @@
+import 'package:first_app/dice_roller.dart';
 import 'package:flutter/material.dart';
 
 // final = const - final is a runtime constant
@@ -11,12 +12,12 @@ class GradientContainer extends StatelessWidget {
   // super.key forwards the key to super
   // `const` here tells dart that this class can be optimised in memory!
   // Can also use { required this.left } to add required named arg.
-  const GradientContainer(this.left, this.right, { super.key });
+  const GradientContainer(this.left, this.right, {super.key});
 
   // Alternative constructor function.
-  const GradientContainer.purple({ super.key }):
-    left = Colors.deepPurple,
-    right = Colors.lightBlue;
+  const GradientContainer.purple({super.key})
+    : left = Colors.deepPurple,
+      right = Colors.lightBlue;
 
   // Overriding a method defined in StatelessWidget
   @override
@@ -32,7 +33,8 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Image.asset('assets/images/dice-1.png', width: 200)
+        // Column takes all available vertical space by default.
+        child: DiceRoller(),
       ),
     );
   }
