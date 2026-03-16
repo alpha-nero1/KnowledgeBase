@@ -1,5 +1,8 @@
 # Flutter & Dart - The Complete Guide
 
+## Info
+https://pub.dev is the dart package registry.
+
 ## Section 1
 ### How to run?
 Can run `flutter run` from terminal.

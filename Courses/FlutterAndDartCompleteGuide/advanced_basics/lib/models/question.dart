@@ -5,7 +5,7 @@ class Question {
   const Question(this.text, this.answers);
 
   // shuffle mutates the original list so we must make a copy.
-  List<String> getShuffledAnswers() {
+  List<String> get shuffled {
     final copy = List.of(answers);
     copy.shuffle();
     return copy;

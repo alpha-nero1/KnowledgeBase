@@ -1,6 +1,7 @@
-# advanced_basics
+# advanced_basics (Quiz app)
 
 A new Flutter project.
+flutter pub add google_fonts
 
 ## Getting Started
 
