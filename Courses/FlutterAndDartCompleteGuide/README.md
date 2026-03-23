@@ -20,3 +20,8 @@ Max has code snapshots to help you to debug and compare code with his own - http
 
 ### Section 2
 Dart parses the dart files and translated to target native platform machine code, like android or iOS machine code.
+
+### Section 3 - Flutter internals
+widget tree - the tree of widgets you have defined
+element tree - in memory representation of widgets
+render tree - updated when determined by element tree comparisons

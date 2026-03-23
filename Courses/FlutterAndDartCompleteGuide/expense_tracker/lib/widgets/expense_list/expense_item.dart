@@ -11,20 +11,27 @@ class ExpenseItem extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: Column(children: [
-          Text(_expense.title),
-          SizedBox(height: 5),
-          Row(children: [
-            Text('\$${_expense.amount.toStringAsFixed(2)}'),
-            // Take up the most width possible.
-            const Spacer(),
-            Row(children: [
-              Icon(categoryIcons[_expense.category]),
-              const SizedBox(width: 8),
-              Text(_expense.formattedDate)
-            ],)
-          ],)
-        ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(_expense.title, style: Theme.of(context).textTheme.titleLarge),
+            SizedBox(height: 5),
+            Row(
+              children: [
+                Text('\$${_expense.amount.toStringAsFixed(2)}'),
+                // Take up the most width possible.
+                const Spacer(),
+                Row(
+                  children: [
+                    Icon(categoryIcons[_expense.category]),
+                    const SizedBox(width: 8),
+                    Text(_expense.formattedDate),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
