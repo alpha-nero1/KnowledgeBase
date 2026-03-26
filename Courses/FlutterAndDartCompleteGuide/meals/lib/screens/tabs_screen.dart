@@ -30,20 +30,11 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   Widget _getActiveScreen() {
     // If mealsProvider ever changed it would trigger rebuild.
-    final meals = ref.watch(mealsProvider);
-    final filtersNotifier = ref.read(filtersProvider.notifier);
+    final filteredMeals = ref.watch(filteredMealsProvider);
 
     if (_selectedIndex == 0) {
-      var availableMeals = meals.where((meal) {
-        if (filtersNotifier.isEnabled(Filter.glutenFree) && !meal.isGlutenFree) return false;
-        if (filtersNotifier.isEnabled(Filter.lactoseFree) && !meal.isLactoseFree) return false;
-        if (filtersNotifier.isEnabled(Filter.vegan) && !meal.isVegan) return false;
-        if (filtersNotifier.isEnabled(Filter.vegetarian) && !meal.isVegetarian) return false;
-        return true;
-      }).toList();
-
       return CategoriesScreen(
-        meals: availableMeals,
+        meals: filteredMeals,
       );
     }
     final favouriteMeals = ref.watch(favouritesProvider);
