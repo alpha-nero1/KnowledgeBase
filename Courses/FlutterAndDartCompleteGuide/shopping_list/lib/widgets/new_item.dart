@@ -158,7 +158,7 @@ class _NewItemState extends State<NewItem> {
 
 /*
 
-To Passs data back:
+To Pass data back:
 
 Navigator.of(context).pop(GroceryItem(
         id: DateTime.now().toString(), 
@@ -166,6 +166,5 @@ Navigator.of(context).pop(GroceryItem(
         quantity: _quantity, 
         category: _selectedCategory)
       );
-
-
 */
+
