@@ -6,6 +6,9 @@ appsettings.Development.json
 **.db**
 Projects/AISoftwareDevTeam/output/
 
+# Firebase
+**firebase_options.dart
+
 # Python
 .venv
 *.sqlite3
