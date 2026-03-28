@@ -17,8 +17,8 @@ class MealDetailsScreen extends ConsumerWidget {
   void favouriteOnPress(BuildContext context, WidgetRef ref, Meal meal) {
     final notifier = ref.read(favouritesProvider.notifier);
     String toggleMsg = notifier.isFavourite(meal)
-      ? 'Meal removed from favourites'
-      : 'Meal added to favourites';
+        ? 'Meal removed from favourites'
+        : 'Meal added to favourites';
     notifier.toggleFavourite(meal);
     _showInfoMessage(context, toggleMsg);
   }
@@ -33,26 +33,41 @@ class MealDetailsScreen extends ConsumerWidget {
         title: Text(meal.title),
         actions: [
           IconButton(
-            onPressed: () => favouriteOnPress(context, ref, meal), 
-            icon: Icon(isFavourite ? Icons.star : Icons.star_border)
-          )
-        ]
+            onPressed: () => favouriteOnPress(context, ref, meal),
+            // Implicit animation!
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween(begin: 0.9, end: 1.0).animate(animation),
+                child: child,
+              ),
+              child: Icon(
+                isFavourite ? Icons.star : Icons.star_border,
+                key: ValueKey(isFavourite),
+              ),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(
-              meal.imageUrl,
-              height: 300,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            // Hero = animate between pages!!
+            Hero(
+              tag: 'meal-${meal.id}',
+              child: Image.network(
+                meal.imageUrl,
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
               'Ingredients',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
@@ -68,12 +83,15 @@ class MealDetailsScreen extends ConsumerWidget {
               'Steps',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
               ),
             ),
             for (final step in meal.steps)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 child: Text(
                   step,
                   textAlign: TextAlign.center,

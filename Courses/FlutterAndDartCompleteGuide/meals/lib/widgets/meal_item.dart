@@ -32,14 +32,17 @@ class MealItem extends StatelessWidget {
           children: [
             // Displays an image that is being faded in, smooth load!
             // Loads from transparent image to real image.
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
-              imageErrorBuilder: (ctx, a, b) =>
-                  Image(image: MemoryImage(kTransparentImage)),
+            Hero(
+              tag: 'meal-${meal.id}',
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+                imageErrorBuilder: (ctx, a, b) =>
+                    Image(image: MemoryImage(kTransparentImage)),
+              ),
             ),
             // Positioned gets rid of need to use Expanded inside.
             // That is because we end up having a fixed width and it is indeed constrained.
