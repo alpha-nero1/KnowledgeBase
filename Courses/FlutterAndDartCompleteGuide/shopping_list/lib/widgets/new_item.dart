@@ -19,21 +19,30 @@ class _NewItemState extends State<NewItem> {
   var _name = '';
   var _quantity = 1;
   var _selectedCategory = categories[Categories.vegetables]!;
+  var _isLoading = false;
 
   void _submit() async {
     /// Force validation on submission!
     if (_formKey.currentState!.validate()) {
       // Lock it in eddy! Works because all the inputs have an onSaved callback defined.
       _formKey.currentState!.save();
-      final groceryItem = await saveItem({
-        'name': _name,
-        'quantity': _quantity,
-        'category': _selectedCategory
+      setState(() {
+        _isLoading = true;
       });
-
-      // Because method is now async!
-      if (!context.mounted) return;
-      Navigator.of(context).pop(groceryItem);
+      try {
+        final groceryItem = await saveItem({
+          'name': _name,
+          'quantity': _quantity,
+          'category': _selectedCategory
+        });
+        // Because method is now async!
+        if (!context.mounted) return;
+        Navigator.of(context).pop(groceryItem);
+      } catch (e) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -134,7 +143,10 @@ class _NewItemState extends State<NewItem> {
                 // Submission buttons!
                 children: [
                   TextButton(onPressed: _reset, child: const Text('Reset')),
-                  ElevatedButton(onPressed: _submit, child: const Text('Submit')),
+                  ElevatedButton(
+                    onPressed: _isLoading ? null : _submit, 
+                    child: _isLoading ? const SizedBox(height: 16, width: 16, child: CircularProgressIndicator()) : const Text('Submit')
+                  ),
                 ],
               ),
             ],

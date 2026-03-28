@@ -9,8 +9,11 @@ const firebaseDb = 'shopping-list-55669.firebaseio.com';
 
 Future<List<GroceryItem>> getList() async {
   final url = Uri.https(firebaseDb, location);
-  final response = await http.get(url);
-  final Map<String, dynamic> listData = json.decode(response.body);
+  final res = await http.get(url);
+  if (res.statusCode >= 400) {
+    throw Exception('Failed to fetch data. Please try again later. Status code ${res.statusCode}');
+  }
+  final Map<String, dynamic> listData = json.decode(res.body);
   final List<GroceryItem> data = [];
   for (final item in listData.entries) {
     final category = categories.entries
@@ -36,6 +39,9 @@ Future<GroceryItem> saveItem(Map<String, dynamic> data) async {
     },
     body: json.encode(data)
   );
+  if (res.statusCode >= 400) {
+    throw Exception('Failed to save data. Please try again later. Status code ${res.statusCode}');
+  }
   final Map<String, dynamic> resData = json.decode(res.body);
   final category = categories.entries
       .firstWhere((catItem) => catItem.value.title == resData['category'])
@@ -47,3 +53,11 @@ Future<GroceryItem> saveItem(Map<String, dynamic> data) async {
     category: category);
 }
 
+
+Future deleteItem(String itemId) async {
+  final url = Uri.https(firebaseDb, 'shopping-list/$itemId.json');
+  final res = await http.delete(url);
+  if (res.statusCode >= 400) {
+    throw Exception('Failed to delete data. Please try again later. Status code ${res.statusCode}');
+  }
+}

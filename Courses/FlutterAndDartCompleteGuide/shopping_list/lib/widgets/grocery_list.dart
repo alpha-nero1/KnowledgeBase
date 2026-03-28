@@ -12,6 +12,7 @@ class GroceryList extends StatefulWidget {
 
 class _State extends State<GroceryList> {
   List<GroceryItem> _groceryItems = [];
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -35,18 +36,52 @@ class _State extends State<GroceryList> {
     });
   }
 
-  void _removeItem(GroceryItem item) => setState(() {
-    _groceryItems.remove(item);
-  });
+  void _removeItem(GroceryItem item) async {
+    final index = _groceryItems.indexOf(item);
+    try {
+      await deleteItem(index.toString());
+    } catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
+    } finally {
+      setState(() {
+        _groceryItems.remove(item);
+      });
+    }
+  }
 
   void load() async {
-    final data = await getList();
-    setState(() {
-      _groceryItems = data;
-    });
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      final data = await getList();
+      setState(() {
+        _groceryItems = data;
+      });
+    } catch (e) {
+      final errorMessage = e.toString();
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage),
+        ),
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   Widget getContent() {
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
     if (_groceryItems.isEmpty) {
       return const Center(child: Text('No items added yet'));
     }
