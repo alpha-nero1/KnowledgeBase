@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/api/api.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/model/category.dart';
 import 'package:shopping_list/model/grocery_item.dart';
@@ -19,16 +20,20 @@ class _NewItemState extends State<NewItem> {
   var _quantity = 1;
   var _selectedCategory = categories[Categories.vegetables]!;
 
-  void _submit() {
+  void _submit() async {
     /// Force validation on submission!
     if (_formKey.currentState!.validate()) {
       // Lock it in eddy! Works because all the inputs have an onSaved callback defined.
       _formKey.currentState!.save();
-      Navigator.of(context).pop(GroceryItem(id: id, name: name, quantity: quantity, category: category))
-      print(_name);
-      print(_quantity);
-      print(_selectedCategory);
-      Na
+      final groceryItem = await saveItem({
+        'name': _name,
+        'quantity': _quantity,
+        'category': _selectedCategory
+      });
+
+      // Because method is now async!
+      if (!context.mounted) return;
+      Navigator.of(context).pop(groceryItem);
     }
   }
 
@@ -139,3 +144,17 @@ class _NewItemState extends State<NewItem> {
     );
   }
 }
+
+/*
+
+To Passs data back:
+
+Navigator.of(context).pop(GroceryItem(
+        id: DateTime.now().toString(), 
+        name: _name, 
+        quantity: _quantity, 
+        category: _selectedCategory)
+      );
+
+
+*/
