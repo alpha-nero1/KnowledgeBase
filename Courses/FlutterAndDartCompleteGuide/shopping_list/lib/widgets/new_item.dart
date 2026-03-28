@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopping_list/api/api.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/model/category.dart';
-import 'package:shopping_list/model/grocery_item.dart';
 
 class NewItem extends StatefulWidget {
   const NewItem({super.key});
@@ -33,7 +32,7 @@ class _NewItemState extends State<NewItem> {
         final groceryItem = await saveItem({
           'name': _name,
           'quantity': _quantity,
-          'category': _selectedCategory
+          'category': _selectedCategory.title
         });
         // Because method is now async!
         if (!context.mounted) return;

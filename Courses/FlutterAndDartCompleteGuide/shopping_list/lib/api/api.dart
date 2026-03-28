@@ -5,13 +5,16 @@ import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/model/grocery_item.dart';
 
 const location = 'shoping-list.json';
-const firebaseDb = 'shopping-list-55669.firebaseio.com';
+const firebaseDb = 'shopping-list-55669-default-rtdb.firebaseio.com';
 
 Future<List<GroceryItem>> getList() async {
   final url = Uri.https(firebaseDb, location);
   final res = await http.get(url);
   if (res.statusCode >= 400) {
     throw Exception('Failed to fetch data. Please try again later. Status code ${res.statusCode}');
+  }
+  if (res.body == 'null') {
+    return [];
   }
   final Map<String, dynamic> listData = json.decode(res.body);
   final List<GroceryItem> data = [];
@@ -44,12 +47,12 @@ Future<GroceryItem> saveItem(Map<String, dynamic> data) async {
   }
   final Map<String, dynamic> resData = json.decode(res.body);
   final category = categories.entries
-      .firstWhere((catItem) => catItem.value.title == resData['category'])
+      .firstWhere((catItem) => catItem.value.title == data['category'])
       .value;
   return GroceryItem(
     id: resData['name'], 
-    name: resData['name'], 
-    quantity: resData['quantity'], 
+    name: data['name'], 
+    quantity: data['quantity'], 
     category: category);
 }
 

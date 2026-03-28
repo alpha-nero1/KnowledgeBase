@@ -121,3 +121,53 @@ class _State extends State<GroceryList> {
     );
   }
 }
+
+
+
+/*
+
+Could use future builder but I am not a fan for loading data tbh
+
+You pass in the future and then FutureBuilder figures things out, ehhh.
+
+body: FutureBuilder(
+  future: _loadedItems,
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (snapshot.hasError) {
+      return Center(
+        child: Text(
+          snapshot.error.toString(),
+        ),
+      );
+    }
+
+    if (snapshot.data!.isEmpty) {
+      return const Center(child: Text('No items added yet.'));
+    }
+
+    return ListView.builder(
+      itemCount: snapshot.data!.length,
+      itemBuilder: (ctx, index) => Dismissible(
+        onDismissed: (direction) {
+          _removeItem(snapshot.data![index]);
+        },
+        key: ValueKey(snapshot.data![index].id),
+        child: ListTile(
+          title: Text(snapshot.data![index].name),
+          leading: Container(
+            width: 24,
+            height: 24,
+            color: snapshot.data![index].category.color,
+          ),
+          trailing: Text(
+            snapshot.data![index].quantity.toString(),
+          ),
+        ),
+      ),
+    );
+
+*/
