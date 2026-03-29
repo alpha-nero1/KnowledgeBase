@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "438540864950",
+    "firebase_url": "https://chatapp-66fc4-default-rtdb.firebaseio.com",
+    "project_id": "chatapp-66fc4",
+    "storage_bucket": "chatapp-66fc4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438540864950:android:eb5be0ceaf1d3b12720517",
+        "android_client_info": {
+          "package_name": "com.example.capstone_chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lcmGnvjp-VyeOtdhEXK_r5YFYAIm-uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
