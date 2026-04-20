@@ -1,0 +1,15 @@
+[project]
+name = "vocabbot"
+version = "0.1.0"
+description = "Small Gradio UI that chats with a GPT-powered vocabulary agent"
+readme = "README.md.md"
+requires-python = ">=3.10"
+dependencies = [
+  "gradio>=4.44.0",
+  "openai>=1.50.0",
+  "python-dotenv>=1.0.1",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

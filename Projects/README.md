@@ -3,7 +3,7 @@ Test and example projects / POCs.
 
 Inside this subfolder are demonstrations of how things can work.
 
-## 🗃️ Directory (✨19)
+## 🗃️ Directory (✨20)
 1.  ✅ [ActiveMQ](./ActiveMQ)
 2.  ✅ [RabbitMQWithMassTransit](./RabbitMQWithMassTransit)
 3.  ✅ [SignalR](./SignalR/)
@@ -23,6 +23,7 @@ Inside this subfolder are demonstrations of how things can work.
 17. ✅ [Scheduler](./Scheduler) Hangfire scheduler setup
 18. ✅ [CRONJobSetup](./Scheduler) Hangfire scheduler setup/includes CRON job setup!
 19. ✅ [Scripts](./Scripts) Demonstrates some great scripting examples
+19. ✅ [VocabBot](./VocabBot) Really cool AI bot I set up to learn new vocabulary for languages, deploys to huggingface.
 
 ## ✨ Wishlist (4)
 - Publish and run docker image of simple server

@@ -1,0 +1,8 @@
+README.md.md
+pyproject.toml
+lib/vocab_agent.py
+vocabbot.egg-info/PKG-INFO
+vocabbot.egg-info/SOURCES.txt
+vocabbot.egg-info/dependency_links.txt
+vocabbot.egg-info/requires.txt
+vocabbot.egg-info/top_level.txt
