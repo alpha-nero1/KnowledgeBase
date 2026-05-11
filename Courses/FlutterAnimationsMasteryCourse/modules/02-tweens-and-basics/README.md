@@ -16,7 +16,7 @@ Now that you understand `AnimationController`, you need to know how to transform
 
 ## Key Concepts
 
-### 1. What is a Tween?
+### 1. What is a Tween? [DONE]
 
 A **Tween** (short for "in-between") maps the controller's 0.0–1.0 to your desired range.
 
@@ -28,13 +28,14 @@ Tween:       100 (begin) ────► 200 (end)
 Value:       100 ────────────────────► 200
 ```
 
-### 2. Common Tween Types
+### 2. Common Tween Types [DONE]
 
 ```dart
 // Double (size, opacity, offset)
 Tween<double>(begin: 0, end: 100)
 
 // Color (color transitions)
+// ColorTween very interesring.
 ColorTween(begin: Colors.red, end: Colors.blue)
 
 // Offset (position)
@@ -47,7 +48,7 @@ RectTween(begin: Rect.fromLTWH(...), end: Rect.fromLTWH(...))
 IntTween(begin: 0, end: 100)
 ```
 
-### 3. Creating a Tween Animation
+### 3. Creating a Tween Animation [DONE]
 
 ```dart
 late AnimationController _controller;
@@ -69,7 +70,7 @@ void initState() {
 
 Now `_sizeAnimation.value` ranges from 50 → 200 as controller goes 0.0 → 1.0.
 
-### 4. Using Tweens in Your UI
+### 4. Using Tweens in Your UI [DONE]
 
 ```dart
 AnimatedBuilder(
@@ -86,7 +87,7 @@ AnimatedBuilder(
 
 ---
 
-## Practical Example: Color Transition
+## Practical Example: Color Transition [DONE]
 
 ```dart
 class ColorTweenExample extends StatefulWidget {
@@ -149,7 +150,7 @@ class _ColorTweenExampleState extends State<ColorTweenExample>
 
 ---
 
-## Tween Chaining
+## Tween Chaining [DONE]
 
 You can chain tweens together:
 
@@ -163,7 +164,7 @@ This applies an easing curve *before* interpolation.
 
 ---
 
-## Practical Example: Size & Position
+## Practical Example: Size & Position [DONE]
 
 ```dart
 class ComplexTweenExample extends StatefulWidget {

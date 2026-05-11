@@ -43,26 +43,6 @@ class _OneScreenState extends State<OneScreen>
     _animationController.dispose();
   }
 
-  void _forward() {
-    _animationController.forward();
-  }
-
-  void _reverse() {
-    _animationController.reverse();
-  }
-
-  void _repeat() {
-    _animationController.repeat();
-  }
-
-  void _repeatBounce() {
-    _animationController.repeat(reverse: true);
-  }
-
-  void _cancel() {
-    _animationController.reset();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

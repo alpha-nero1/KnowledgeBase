@@ -1,4 +1,4 @@
-# Module 01: Animation Fundamentals & AnimationController
+# Module 01: Animation Fundamentals & AnimationController [DONE]
 
 ## Overview
 
@@ -246,21 +246,21 @@ _controller.addListener(() {
 
 ---
 
-## Exercises []
+## Exercises [DONE]
 
-### Exercise 1: Spin Animation
+### Exercise 1: Spin Animation [DONE]
 Create a widget with a rotating icon that:
 - Starts spinning when a button is pressed
 - Spins 3 times then stops
 - Hint: `_controller.repeat()` with a stop condition
 
-### Exercise 2: Pulse Animation
+### Exercise 2: Pulse Animation [DONE]
 Create a pulse effect:
 - Scale from 1.0 → 1.2 → 1.0
 - Repeats forever
 - Hint: Use `forward()` + status listener to reverse
 
-### Exercise 3: Multi-Controller Widget
+### Exercise 3: Multi-Controller Widget [DONE]
 Create a widget with:
 - Fade animation (one controller)
 - Slide animation (another controller)
