@@ -96,7 +96,7 @@ Perfect for staggering multi-element animations.
 
 ---
 
-## Practical Example: Comparing Curves Visually
+## Practical Example: Comparing Curves Visually [DONE]
 
 ```dart
 class CurveComparison extends StatefulWidget {
@@ -238,7 +238,7 @@ CurvedAnimation(
 
 ---
 
-## Interval: Staggering Example
+## Interval: Staggering Example [DONE]
 
 ```dart
 class StaggeredAnimation extends StatefulWidget {
@@ -350,13 +350,16 @@ Three boxes slide in sequence, creating a cascading effect.
 
 ## Exercises
 
-### Exercise 1: Bouncy Button
+### Exercise 1: Bouncy Button [DONE]
 Create a button that bounces when tapped:
 - Scale from 1.0 → 1.1 → 1.0
 - Use `bounceOut` curve
 - Hint: Use repeat() or reverse() after forward()
+```
+Had to use forward().then(() => reverse())
+```
 
-### Exercise 2: Page Transition
+### Exercise 2: Page Transition []
 Animate a page entrance:
 - Opacity: 0 → 1 (0% to 50%)
 - Scale: 0.8 → 1.0 (0% to 50%)
