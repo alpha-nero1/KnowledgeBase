@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:src/one_fundamentals/one.dart';
 import 'package:src/one_fundamentals/one_excercises.dart';
 import 'package:src/one_fundamentals/one_fade.dart';
-import 'package:src/two_tweens/two_chain_size_and_position.dart';
-import 'package:src/two_tweens/two_colour_tween.dart';
+import 'package:src/two_tweens/two_02_chain_size_and_position.dart';
+import 'package:src/two_tweens/two_01_colour_tween.dart';
+import 'package:src/two_tweens/two_03_custom_tween.dart';
+import 'package:src/two_tweens/two_04.1_gradient_chain.dart';
+import 'package:src/two_tweens/two_04.2.5_bouncy_ball_dissipate.dart';
+import 'package:src/two_tweens/two_04.2_bouncy_ball.dart';
+import 'package:src/two_tweens/two_04.3_growing_text.dart';
+import 'package:src/two_tweens/two_04.4_border_radius_tween.dart';
 
 class App extends StatelessWidget {
   final List<({ String title, Widget widget })> items = [
@@ -11,7 +17,13 @@ class App extends StatelessWidget {
     (title: 'Module 1 (Fade)', widget: OneScreenFade()),
     (title: 'Module 1 (Exercises)', widget: OneScreenExcercises()),
     (title: 'Module 2 (ColorTween)', widget: TwoColourTweenScreen()),
-    (title: 'Module 2 (Animate Size, Position & Colour simultaneously)', widget: TwoSizeAndPositionScreen())
+    (title: 'Module 2 (Animate Size, Position & Colour simultaneously)', widget: TwoSizeAndPositionScreen()),
+    (title: 'Module 2 (Custom Tween)', widget: Two03CustomTween()),
+    (title: 'Module 2 (Gradient chain of animation)', widget: Two04GradientChain()),
+    (title: 'Module 2 (Bouncy ball)', widget: Two04BouncyBall()),
+    (title: 'Module 2 (Bouncy ball disspate)', widget: Two042DissipatingBouncyBall()),
+    (title: 'Module 2 (Growing text)', widget: Two043GrowingText()),
+    (title: 'Module 2 (Border radius custom tween)', widget: Two044BorderRadiusTween())
   ];
 
   App({super.key});

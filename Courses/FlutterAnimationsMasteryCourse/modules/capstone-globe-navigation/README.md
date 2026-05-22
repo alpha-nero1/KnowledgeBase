@@ -1,5 +1,7 @@
 # Capstone: Interactive 3D Globe Navigation
 
+Do a dynamic globe of globes animation where tapping one sub globe navigates to another one, animating on a solar curve is the goal.
+
 ## Project Overview
 
 Build a **production-quality interactive 3D globe** that synthesizes everything you've learned. This project combines:

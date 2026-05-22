@@ -247,7 +247,7 @@ class _ComplexTweenExampleState extends State<ComplexTweenExample>
 
 ---
 
-## Custom Tween
+## Custom Tween [DONE]
 
 You can create tweens for custom types:
 
@@ -272,7 +272,7 @@ The key method is `lerp()` (linear interpolation). For value `t` (0.0–1.0), co
 
 ---
 
-## Common Mistakes
+## Common Mistakes [DONE]
 
 ❌ **Creating multiple tweens without merging listeners:**
 ```dart
@@ -327,12 +327,12 @@ var animation = Tween<double>(begin: 0, end: 100)
 
 ## Exercises
 
-### Exercise 1: Gradient Animation
+### Exercise 1: Gradient Animation [DONE]
 Create a container that animates through multiple colors in sequence:
 - Red → Yellow → Green
 - Hint: Use two controllers and trigger them sequentially
 
-### Exercise 2: Bouncing Ball
+### Exercise 2: Bouncing Ball [DONE]
 Animate a ball that:
 - Falls down (size stays same)
 - Bounces when it hits bottom
@@ -340,14 +340,14 @@ Animate a ball that:
 - Repeats
 - Hint: Use Offset tween with custom positioning
 
-### Exercise 3: Growing Text
+### Exercise 3: Growing Text [DONE]
 Create a text widget that:
 - Starts at size 12
 - Grows to size 48
 - Changes color while growing
 - Hint: Combine TextStyle with double tween
 
-### Exercise 4: Custom Tween
+### Exercise 4: Custom Tween [DONE]
 Create a `BorderRadiusTween`:
 - Animates from circle (50) to square (0) border radius
 - Hint: Implement custom `lerp()` method
