@@ -50,7 +50,7 @@ When you change `opacity: 0.5 → 0.9`, it smoothly animates instead of jumping.
 | `AnimatedPadding` | padding |
 | `AnimatedSlide` | slide position |
 
-### 3. Usage Pattern
+### 3. Usage Pattern [DONE]
 
 ```dart
 class MyWidget extends StatefulWidget {
@@ -87,7 +87,7 @@ That's it. No controller, no tween, no listener. The widget handles it internall
 
 ---
 
-## Practical Example: AnimatedContainer
+## Practical Example: AnimatedContainer []
 
 The most powerful implicit widget.
 

@@ -19,6 +19,33 @@ This course is structured in four learning phases:
 
 ---
 
+## Progress Tracking
+
+Use this checklist to track completion:
+
+Phase 1: Foundation
+- [DONE] Module 1, Animation fundamentals
+- [DONE] Module 2, Tweens & basics 
+- [DONE] Module 3, Curves & timing
+
+Phase 2: Intermediate 
+- [ ] Module 4, Animated widgets
+- [ ] Module 5, Implicit vs Explicit animation
+- [ ] Module 6, Sequences & intervals
+- [ ] Module 7, Custom animation widgets
+
+Phase 3: Advanced 
+- [ ] Module 8, Custom painters
+- [ ] Module 9, Physics animations
+- [ ] Module 10, Gesture driven animations
+- [ ] Module 11, 3d transformations
+- [ ] Module 12, performance & patters
+
+Phase 4: Capstone
+- [ ] Phase 4: Capstone Project
+
+---
+
 ## Learning Path
 
 ### Phase 1: Foundation (1 week)
@@ -193,17 +220,6 @@ Throughout the course you'll see references to:
 - **DevTools Performance**: Learn to profile animations
 - **Dart Documentation:** For math concepts (Matrix4, Quaternion, etc.)
 - **Research Papers:** For physics simulations and easing functions
-
----
-
-## Progress Tracking
-
-Use this checklist to track completion:
-
-- [ ] Phase 1: Foundation (Modules 01–03)
-- [ ] Phase 2: Intermediate (Modules 04–07)
-- [ ] Phase 3: Advanced (Modules 08–12)
-- [ ] Phase 4: Capstone Project
 
 ---
 

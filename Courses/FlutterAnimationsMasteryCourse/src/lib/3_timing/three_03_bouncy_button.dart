@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Demonstrates a simple pulse animation, could have also used TweenSequence
+/// but instead this manipulates .forward() and .reverse() in sequence to give the pulse
+/// impression.
+///
 class Three03BouncyButton extends StatefulWidget {
   const Three03BouncyButton({super.key});
 

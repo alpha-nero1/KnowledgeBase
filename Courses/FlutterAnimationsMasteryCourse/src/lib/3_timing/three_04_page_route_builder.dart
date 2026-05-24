@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Example of page route building for reference.
+///
 Route exampleONLY_createCustomRoute(Widget destinationPage) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => destinationPage,

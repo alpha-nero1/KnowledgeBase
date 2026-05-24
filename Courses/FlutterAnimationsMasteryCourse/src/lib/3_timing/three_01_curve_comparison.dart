@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Basic visual curve comparisons.
+///
 class Three01CurveComparison extends StatefulWidget {
   const Three01CurveComparison({super.key});
 

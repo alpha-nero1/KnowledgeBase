@@ -1,7 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
+/// Stagger an animation using curve: Interval()
+///
 class Three02StaggeredAnimation extends StatefulWidget {
   const Three02StaggeredAnimation({super.key});
 

@@ -359,21 +359,21 @@ Create a button that bounces when tapped:
 Had to use forward().then(() => reverse())
 ```
 
-### Exercise 2: Page Transition []
+### Exercise 2: Page Transition [DONE]
 Animate a page entrance:
 - Opacity: 0 → 1 (0% to 50%)
 - Scale: 0.8 → 1.0 (0% to 50%)
 - SlideUp: 50px → 0 (0% to 100%)
 - Hint: Use multiple tweens with different intervals
 
-### Exercise 3: Loading Spinner
+### Exercise 3: Loading Spinner [DONE]
 Create a spinning loader with ease:
 - Rotates 360° every 2 seconds
 - Use `linear` curve
 - Add scale pulse using nested controller
 - Hint: Use Transform.rotate with angle calculation
 
-### Exercise 4: Custom Elastic Curve
+### Exercise 4: Custom Elastic Curve [DONE]
 Implement a custom curve that overshoots (goes past target then bounces back):
 - Design the math to overshoot by 20%
 - Use in a slide animation

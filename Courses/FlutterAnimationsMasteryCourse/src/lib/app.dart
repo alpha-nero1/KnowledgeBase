@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:src/one_fundamentals/one.dart';
-import 'package:src/one_fundamentals/one_excercises.dart';
-import 'package:src/one_fundamentals/one_fade.dart';
-import 'package:src/three_timing/three_01_curve_comparison.dart';
-import 'package:src/three_timing/three_02_staggered_animation.dart';
-import 'package:src/three_timing/three_03_bouncy_button.dart';
-import 'package:src/two_tweens/two_02_chain_size_and_position.dart';
-import 'package:src/two_tweens/two_01_colour_tween.dart';
-import 'package:src/two_tweens/two_03_custom_tween.dart';
-import 'package:src/two_tweens/two_04.1_gradient_chain.dart';
-import 'package:src/two_tweens/two_04.2.5_bouncy_ball_dissipate.dart';
-import 'package:src/two_tweens/two_04.2_bouncy_ball.dart';
-import 'package:src/two_tweens/two_04.3_growing_text.dart';
-import 'package:src/two_tweens/two_04.4_border_radius_tween.dart';
+import 'package:src/1_fundamentals/one.dart';
+import 'package:src/1_fundamentals/one_excercises.dart';
+import 'package:src/1_fundamentals/one_fade.dart';
+import 'package:src/3_timing/three_01_curve_comparison.dart';
+import 'package:src/3_timing/three_02_staggered_animation.dart';
+import 'package:src/3_timing/three_03_bouncy_button.dart';
+import 'package:src/3_timing/three_05_custom_page_entrance.dart';
+import 'package:src/3_timing/three_06_custom_loading_indicator.dart';
+import 'package:src/3_timing/three_07_custom_overshoot_curve.dart';
+import 'package:src/2_tweens/two_02_chain_size_and_position.dart';
+import 'package:src/2_tweens/two_01_colour_tween.dart';
+import 'package:src/2_tweens/two_03_custom_tween.dart';
+import 'package:src/2_tweens/two_04.1_gradient_chain.dart';
+import 'package:src/2_tweens/two_04.2.5_bouncy_ball_dissipate.dart';
+import 'package:src/2_tweens/two_04.2_bouncy_ball.dart';
+import 'package:src/2_tweens/two_04.3_growing_text.dart';
+import 'package:src/2_tweens/two_04.4_border_radius_tween.dart';
+import 'package:src/4_animated_widgets/four_01_animated_opacity.dart';
 
 class App extends StatelessWidget {
   final List<({ String title, Widget widget })> items = [
@@ -29,7 +33,11 @@ class App extends StatelessWidget {
     (title: 'Module 2 (Border radius custom tween)', widget: Two044BorderRadiusTween()),
     (title: 'Module 3 (Curve comparison)', widget: Three01CurveComparison()),
     (title: 'Module 3 (Staggered animation)', widget: Three02StaggeredAnimation()),
-    (title: 'Module 3 (Bounce out button)', widget: Three03BouncyButton())
+    (title: 'Module 3 (Bounce out button)', widget: Three03BouncyButton()),
+    (title: 'Module 3 (Page animation with diff intervals)', widget: Three05CustomPageEntrance()),
+    (title: 'Module 3 (Custom loading indicator)', widget: Three06CustomLoadingIndicator()),
+    (title: 'Module 3 (Custom overshoot curve)', widget: Three07CustomOvershootCurve()),
+    (title: 'Module 4 (Demo basic AnimatedOpacity)', widget: Four01AnimatedOpacity())
   ];
 
   App({super.key});
