@@ -22,3 +22,9 @@ Animated widgets remove the tedious need for AnimatedBuilder, AnimationControlle
 *Explicit* animations are ANY time you defined the animation explicitly using AnimationController, AnimatedBuilder & Tween
 ---
 *Implicit* animations are ANY time you just defined a value that any `Animated*` widget simply listens to in order to animate it's contents.
+
+## Repeated implicit animations
+You will need to use Timer.periodic() to increment your values!
+
+## AnimatedDefaultTextStyle
+There is a widget for changing the default text style of a page! unreal!

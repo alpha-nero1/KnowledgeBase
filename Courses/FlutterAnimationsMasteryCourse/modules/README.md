@@ -44,6 +44,8 @@ Phase 3: Advanced
 Phase 4: Capstone
 - [ ] Phase 4: Capstone Project
 
+% complete (4/13) = 30.7%
+
 ---
 
 ## Learning Path
