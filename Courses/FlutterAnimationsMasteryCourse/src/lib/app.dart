@@ -17,6 +17,12 @@ import 'package:src/2_tweens/two_04.2_bouncy_ball.dart';
 import 'package:src/2_tweens/two_04.3_growing_text.dart';
 import 'package:src/2_tweens/two_04.4_border_radius_tween.dart';
 import 'package:src/4_animated_widgets/four_01_animated_opacity.dart';
+import 'package:src/4_animated_widgets/four_02_holy_animated_container.dart';
+import 'package:src/4_animated_widgets/four_03_animated_cross_fade.dart';
+import 'package:src/4_animated_widgets/four_04_side_drawer.dart';
+import 'package:src/4_animated_widgets/four_05_image_gallery.dart';
+import 'package:src/4_animated_widgets/four_06_implicit_spinner.dart';
+import 'package:src/4_animated_widgets/four_07_theme_toggle.dart';
 
 class App extends StatelessWidget {
   final List<({ String title, Widget widget })> items = [
@@ -37,7 +43,13 @@ class App extends StatelessWidget {
     (title: 'Module 3 (Page animation with diff intervals)', widget: Three05CustomPageEntrance()),
     (title: 'Module 3 (Custom loading indicator)', widget: Three06CustomLoadingIndicator()),
     (title: 'Module 3 (Custom overshoot curve)', widget: Three07CustomOvershootCurve()),
-    (title: 'Module 4 (Demo basic AnimatedOpacity)', widget: Four01AnimatedOpacity())
+    (title: 'Module 4 (Demo basic AnimatedOpacity)', widget: Four01AnimatedOpacity()),
+    (title: 'Module 4 (All mighty AnimatedContainer)', widget: Four02HolyAnimatedContainer()),
+    (title: 'Module 4 (Animated cross fade?)', widget: Four03AnimatedCrossFade()),
+    (title: 'Module 4 (Implicit side drawer)', widget: Four04SideDrawer()),
+    (title: 'Module 4 (Image gallery with AnimatedContainer)', widget: Four05ImageGallery()),
+    (title: 'Module 4 (Implicit spinner)', widget: Four06ImplicitSpinner()),
+    (title: 'Module 4 (Theme toggle)', widget: Four07ThemeToggle())
   ];
 
   App({super.key});

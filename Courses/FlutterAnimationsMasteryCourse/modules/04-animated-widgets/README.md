@@ -87,7 +87,7 @@ That's it. No controller, no tween, no listener. The widget handles it internall
 
 ---
 
-## Practical Example: AnimatedContainer []
+## Practical Example: AnimatedContainer [DONE]
 
 The most powerful implicit widget.
 
@@ -194,7 +194,7 @@ class _AnimatedPositionedExampleState extends State<AnimatedPositionedExample> {
 
 ---
 
-## Practical Example: AnimatedCrossFade
+## Practical Example: AnimatedCrossFade [DONE]
 
 Smoothly swap between two widgets:
 
@@ -306,27 +306,27 @@ AnimatedOpacity(
 
 ## Exercises
 
-### Exercise 1: Expandable Drawer
+### Exercise 1: Expandable Drawer [DONE]
 Create a sidebar that:
 - Slides in/out when button tapped
 - Uses AnimatedPositioned
 - Changes color while expanding
 - Hint: Use AnimatedContainer for color, AnimatedPositioned for slide
 
-### Exercise 2: Image Gallery
+### Exercise 2: Image Gallery [DONE]
 Create a gallery that:
 - Shows one image at a time
 - CrossFade between images on tap
 - Hint: Use AnimatedCrossFade with list of images
 
-### Exercise 3: Loading Spinner
+### Exercise 3: Loading Spinner [DONE]
 Animate a loading state with:
 - Rotating spinner (AnimatedRotation)
 - Pulsing background (AnimatedScale)
 - Fading text below (AnimatedOpacity)
 - Hint: Combine multiple animated widgets
 
-### Exercise 4: Theme Toggle
+### Exercise 4: Theme Toggle [DONE]
 Create a theme switcher that:
 - Animates background color (AnimatedContainer)
 - Animates text color (AnimatedDefaultTextStyle)
@@ -359,7 +359,7 @@ Create a theme switcher that:
 2. **Common Animated Widgets**: Learn the main ones (Container, Opacity, Positioned)
 3. **Curves Still Matter**: Even implicit animations should have good easing
 4. **Know the Limits**: When you need more control, explicit animations are there
-5. **Const Your Children**: Avoid unnecessary rebuilds
+5. **Const Your Children**: Avoid unnecessary rebuilds - good point!
 
 ---
 

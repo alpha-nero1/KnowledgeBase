@@ -29,7 +29,7 @@ Phase 1: Foundation
 - [DONE] Module 3, Curves & timing
 
 Phase 2: Intermediate 
-- [ ] Module 4, Animated widgets
+- [DONE] Module 4, Animated widgets
 - [ ] Module 5, Implicit vs Explicit animation
 - [ ] Module 6, Sequences & intervals
 - [ ] Module 7, Custom animation widgets
