@@ -74,7 +74,7 @@ AnimatedBuilder(
 
 ---
 
-## Practical Scenario 1: Button Tap Feedback
+## Practical Scenario 1: Button Tap Feedback [DONE]
 
 **Implicit (Simple, Best Choice):**
 ```dart
@@ -116,7 +116,7 @@ Simple, readable, perfect fit.
 
 ---
 
-## Practical Scenario 2: Choreographed List Entry Animation
+## Practical Scenario 2: Choreographed List Entry Animation [DONE]
 
 **Explicit (Complex, Best Choice):**
 
@@ -196,7 +196,7 @@ With implicit, you'd need to setState for each item—messy. Explicit makes it c
 
 ---
 
-## Practical Scenario 3: Gesture-Driven Interaction
+## Practical Scenario 3: Gesture-Driven Interaction [DONE]
 
 **Explicit Only:**
 
@@ -299,7 +299,7 @@ You can't do this with implicit—you need control over the animation frame-by-f
 
 ---
 
-## Hybrid Approach
+## Hybrid Approach [DONE]
 
 Mix both in the same widget:
 
@@ -415,23 +415,23 @@ AnimatedOpacity(
 
 ## Exercises
 
-### Exercise 1: Decision Tree
+### Exercise 1: Decision Tree [DONE]
 For each scenario, decide implicit vs. explicit:
-1. Button scales on tap
-2. List items appear staggered on load
-3. Slider position follows finger drag
-4. Toggle between two colors
-5. Repeated rotating logo
-6. Swipe gesture reveals hidden menu
+1. Button scales on tap [IMPLICIT]
+2. List items appear staggered on load [EXPLICIT]
+3. Slider position follows finger drag [EXPLICIT]
+4. Toggle between two colors [IMPLICIT]
+5. Repeated rotating logo [EXPLICIT]
+6. Swipe gesture reveals hidden menu [EXPLICIT]
 
-### Exercise 2: Hybrid Widget
+### Exercise 2: Hybrid Widget [DONE]
 Create a widget that:
 - Has an explicit animation (rotating background)
 - Has an implicit animation (button scale on tap)
 - Interactions between them
 - Hint: Use both controller and implicit widget
 
-### Exercise 3: Convert Implicit to Explicit
+### Exercise 3: Convert Implicit to Explicit [NO-LOL]
 Take an AnimatedContainer example and rewrite it as explicit (controller + tween):
 - Compare code length
 - Compare clarity

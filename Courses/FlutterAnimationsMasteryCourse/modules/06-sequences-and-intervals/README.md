@@ -17,7 +17,7 @@ Real animations rarely run in isolation. This module teaches you to coordinate m
 
 ## Key Concepts
 
-### 1. Sequential Animations (One After Another)
+### 1. Sequential Animations (One After Another) [DONE]
 
 Use `addStatusListener()` to trigger the next animation:
 
@@ -46,7 +46,7 @@ void _fadeIn() {
 }
 ```
 
-### 2. Interval: Timing Within a Single Controller
+### 2. Interval: Timing Within a Single Controller [DONE]
 
 Run multiple tweens at different time ranges in one controller:
 
@@ -79,7 +79,7 @@ _fadeAnimation = Tween<double>(begin: 0, end: 1)
 
 ---
 
-## Practical Example: Loading Dialog Sequence
+## Practical Example: Loading Dialog Sequence [DONE]
 
 Three animations in sequence:
 
@@ -212,7 +212,7 @@ class _SequentialLoadingDialogState extends State<SequentialLoadingDialog>
 
 ---
 
-## Practical Example: Staggered List Animation
+## Practical Example: Staggered List Animation [DONE]
 
 Multiple items animate with delay:
 
@@ -290,7 +290,7 @@ class _StaggeredListAnimationState extends State<StaggeredListAnimation>
 
 ---
 
-## Practical Example: Multi-Stage Choreography
+## Practical Example: Multi-Stage Choreography []
 
 Using Interval for a complex dance:
 

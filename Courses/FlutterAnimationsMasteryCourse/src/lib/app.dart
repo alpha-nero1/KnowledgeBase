@@ -23,6 +23,11 @@ import 'package:src/4_animated_widgets/four_04_side_drawer.dart';
 import 'package:src/4_animated_widgets/four_05_image_gallery.dart';
 import 'package:src/4_animated_widgets/four_06_implicit_spinner.dart';
 import 'package:src/4_animated_widgets/four_07_theme_toggle.dart';
+import 'package:src/5_implicit_vs_explicit/five_01_hybrid_approach.dart';
+import 'package:src/6_sequences_and_intervals/six_01_chained_animation.dart';
+import 'package:src/6_sequences_and_intervals/six_02_staggered_list.dart';
+import 'package:src/7_maths/seven_01_curve_city.dart';
+import 'package:src/7_maths/seven_02_wave_city.dart';
 
 class App extends StatelessWidget {
   final List<({ String title, Widget widget })> items = [
@@ -49,7 +54,12 @@ class App extends StatelessWidget {
     (title: 'Module 4 (Implicit side drawer)', widget: Four04SideDrawer()),
     (title: 'Module 4 (Image gallery with AnimatedContainer)', widget: Four05ImageGallery()),
     (title: 'Module 4 (Implicit spinner)', widget: Four06ImplicitSpinner()),
-    (title: 'Module 4 (Theme toggle)', widget: Four07ThemeToggle())
+    (title: 'Module 4 (Theme toggle)', widget: Four07ThemeToggle()),
+    (title: 'Module 5 (Hybrid approach)', widget: Five01HybridApproach()),
+    (title: 'Module 6 (Chained animations)', widget: Six01ChainedAnimation()),
+    (title: 'Module 6 (Staggered list)', widget: Six02StaggeredList(items: six02staggeredListItems)),
+    (title: 'Module 7 (Drawing trig curves)', widget: Seven01CurveCity()),
+    (title: 'Module 7 (Drawing trig waves)', widget: Seven02WaveCity())
   ];
 
   App({super.key});
